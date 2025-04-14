@@ -1,8 +1,4 @@
-const products = [
-    { id: 1, name: "product 1", price: 1000, is_active: true },
-    { id: 2, name: "product 2", price: 2000, is_active: false },
-    { id: 3, name: "product 3", price: 3000, is_active: true },
-]
+import { useState } from "react";
 
 function App() {
 
@@ -22,12 +18,28 @@ function Header() {
 }
 
 function ProductList() {
+
+    const [products, setProducts] = useState([
+        { id: 1, name: "product 1", price: 1000, is_active: true },
+        { id: 2, name: "product 2", price: 2000, is_active: false },
+        { id: 3, name: "product 3", price: 3000, is_active: true },
+    ]);
+
+    function addProduct() {
+        setProducts([...products, { id: Date.now(), name: "product 4", price: 4000, is_active: true }]);
+    }
+
+    console.log("render...");
+
     return (
         <div>
             <h2>ProductList</h2>
             {products.map(p => (
                 <Product key={p.id} product={p} />
             ))}
+
+            <button onClick={addProduct}>Add Product</button>
+
         </div>
     );
 }
