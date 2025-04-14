@@ -1,5 +1,6 @@
-
 using API.Data;
+using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore; 
 
 namespace API
 {
@@ -11,9 +12,13 @@ namespace API
 
             // Add services to the container.
 
+            var config = builder.Configuration; // Fix: Assign builder.Configuration to 'config'
+
             builder.Services.AddDbContext<DataContext>(options =>
             {
-                var config = builder.Configuration;
+                var connectionString = config.GetConnectionString("DefaultConnection");
+                var serverVersion = ServerVersion.AutoDetect(connectionString); // MariaDB or MySQL
+                options.UseMySql(connectionString, serverVersion);
             });
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -32,7 +37,6 @@ namespace API
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 
