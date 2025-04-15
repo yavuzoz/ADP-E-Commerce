@@ -1,6 +1,6 @@
 using API.Data;
 using Microsoft.Extensions.Configuration;
-using Microsoft.EntityFrameworkCore; 
+using Microsoft.EntityFrameworkCore;
 
 namespace API
 {
