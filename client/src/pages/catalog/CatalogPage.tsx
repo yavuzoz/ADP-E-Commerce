@@ -1,18 +1,24 @@
 import { useState, useEffect } from "react";
 import { IProduct } from "../../model/IProduct";
 import ProductList from "./ProductList";
+import { CircularProgress } from "@mui/material";
 
 export default function CatalogPage() {
 
     const [products, setProducts] = useState<IProduct[]>([]);
+    const [loading, setLoading] = useState(false);
 
 
     useEffect(() => {
         // fetch request to get products from the server
         fetch("http://localhost:5025/api/products")
             .then(response => response.json())
-            .then(data => setProducts(data));
+            .then(data => setProducts(data))
+            .finally(() => setLoading(false));
     }, []);
+
+    if (loading) return <CircularProgress />;
+
 
 
     return (

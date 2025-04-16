@@ -1,29 +1,62 @@
-import { Typography } from '@mui/material';
+import { CircularProgress, Divider, Grid, Table, TableBody, TableCell, TableContainer, TableRow, Typography, } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { IProduct } from '../../model/IProduct';
 
 export default function ProductDetailsPage() {
-
     const { id } = useParams();
     const [product, setProduct] = useState<IProduct | null>(null);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-
+        setLoading(true);
         fetch(`http://localhost:5025/api/products/${id}`)
-            .then(response => response.json())
-            .then(data => setProduct(data))
-            .catch(error => console.log(error))
+            .then((response) => response.json())
+            .then((data) => setProduct(data))
+            .catch((error) => console.log(error))
             .finally(() => setLoading(false));
-
     }, [id]);
 
-    if (loading) return <h5>Loading...</h5>;
+    if (loading) return <CircularProgress />;
 
     if (!product) return <h5>Product not found</h5>;
 
     return (
-        <Typography variant="h2">{product.name}</Typography>
+        <Grid container spacing={6}>
+            <Grid item xs={12} sm={6} md={5} lg={4}>
+                <img
+                    src={`http://localhost:5025/images/${product.imageUrl}`}
+                    alt={product.name}
+                    style={{ width: "100%" }}
+                />
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={7} lg={8}>
+                <Typography variant="h3" gutterBottom>{product.name}</Typography>
+                <Divider sx={{ mb: 2 }} />
+                <Typography variant="h4" color="secondary" gutterBottom>
+                    {(product.price / 100).toFixed(2)} CHF
+                </Typography>
+
+                <TableContainer>
+                    <Table>
+                        <TableBody>
+                            <TableRow>
+                                <TableCell><strong>Name</strong></TableCell>
+                                <TableCell>{product.name}</TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell><strong>Description</strong></TableCell>
+                                <TableCell>{product.description}</TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell><strong>Stock</strong></TableCell>
+                                <TableCell>{product.stock}</TableCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            </Grid>
+        </Grid>
     );
 }

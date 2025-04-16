@@ -31,7 +31,7 @@ export default function Header(props: any) {
                     <Stack direction="row">
                         {
                             links.map(link =>
-                                <Button component={NavLink} to={link.to} sx={navStyles}>{link.title}</Button>
+                                <Button key={link.to} component={NavLink} to={link.to} sx={navStyles}>{link.title}</Button>
                             )
                         }
                     </Stack>
