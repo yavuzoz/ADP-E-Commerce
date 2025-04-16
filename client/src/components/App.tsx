@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { IProduct } from "../model/IProduct";
 import Header from "./Header";
-import * as React from "react";
 import ProductList from "./ProductList";
+import ButtonUsage from "./ButtonUsage";
 
 
 
@@ -33,6 +33,8 @@ function App() {
         <>
             <Header products={products} />
             <ProductList products={products} addProduct={addProduct} />
+
+            <ButtonUsage /> 
         </>
     );
 }
