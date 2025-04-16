@@ -1,7 +1,17 @@
-import * as React from "react";
+import { AppBar, Toolbar, Typography } from "@mui/material";
 
 export default function Header(props: any) {
     return (
-        <h1>Header [{props.products.lenght}]</h1>
+        <AppBar position="static">
+
+            <Toolbar>
+
+                <Typography variant="h6">
+                    E-commerce
+                </Typography>
+
+            </Toolbar>
+
+        </AppBar>
     );
 }
