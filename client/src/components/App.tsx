@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import { IProduct } from "../model/IProduct";
 import Header from "./Header";
-import ProductList from "./ProductList";
 import { Container, CssBaseline } from "@mui/material";
-
-
+import { Outlet } from "react-router";
 
 function App() {
 
@@ -27,7 +25,7 @@ function App() {
             <CssBaseline />
             <Header />
             <Container>
-                <ProductList products={products} />
+                <Outlet />
             </Container>
         </>
     );
