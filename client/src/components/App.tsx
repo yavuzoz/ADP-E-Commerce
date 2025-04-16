@@ -20,21 +20,14 @@ function App() {
 
 
 
-    function addProduct() {
-        setProducts([...products, {
-            id: Date.now(),
-            name: "product 4",
-            price: 4000,
-            isActive: true,
-        }]);
-    }
+
 
     return (
         <>
             <CssBaseline />
             <Header />
             <Container>
-                <ProductList products={products} addProduct={addProduct} />
+                <ProductList products={products} />
             </Container>
         </>
     );
