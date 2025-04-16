@@ -1,5 +1,6 @@
-﻿using API.Data;
-using Microsoft.EntityFrameworkCore;
+using API.Data;
+using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore; 
 
 namespace API
 {
@@ -9,34 +10,24 @@ namespace API
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            var config = builder.Configuration;
+            // Add services to the container.
 
-            // 🔓 CORS: React 53291 portundan erişim izni ver
-            builder.Services.AddCors(options =>
-            {
-                options.AddPolicy("CorsPolicy", policy =>
-                {
-                    policy.AllowAnyHeader()
-                          .AllowAnyMethod()
-                          .WithOrigins("http://localhost:53291"); // React frontend portu
-                });
-            });
+            var config = builder.Configuration; // Fix: Assign builder.Configuration to 'config'
 
-            // 🛢️ Veritabanı bağlantısı (MariaDB)
             builder.Services.AddDbContext<DataContext>(options =>
             {
                 var connectionString = config.GetConnectionString("DefaultConnection");
-                var serverVersion = ServerVersion.AutoDetect(connectionString);
+                var serverVersion = ServerVersion.AutoDetect(connectionString); // MariaDB or MySQL
                 options.UseMySql(connectionString, serverVersion);
             });
-
             builder.Services.AddControllers();
+            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
 
-            // 🚀 Swagger dev ortamında aktif
+            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -44,11 +35,6 @@ namespace API
             }
 
             app.UseHttpsRedirection();
-
-            app.UseStaticFiles();
-
-            // 🔧 CORS middleware
-            app.UseCors("CorsPolicy");
 
             app.UseAuthorization();
 
