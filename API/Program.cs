@@ -45,6 +45,8 @@ namespace API
 
             app.UseHttpsRedirection();
 
+            app.UseStaticFiles();
+
             // 🔧 CORS middleware
             app.UseCors("CorsPolicy");
 
