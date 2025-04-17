@@ -72,7 +72,7 @@
               "RelativeDocumentMoniker": "client\\.gitignore",
               "ToolTip": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\client\\.gitignore",
               "RelativeToolTip": "client\\.gitignore",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAB8AAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-04-17T14:38:18.589Z",
               "EditorCaption": ""
@@ -159,8 +159,7 @@
               "RelativeToolTip": "API\\Middlewares\\ExceptionHandling.cs",
               "ViewState": "AgIAABkAAAAAAAAAAAAkwC4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-17T06:33:42.092Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-17T06:33:42.092Z"
             },
             {
               "$type": "Document",

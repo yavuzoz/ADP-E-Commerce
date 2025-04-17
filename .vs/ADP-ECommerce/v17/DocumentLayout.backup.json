@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{5DC3FCCF-9129-207D-CAD8-1B96C9FA47E2}|Client\\client.esproj|c:\\users\\yavuz\\source\\repos\\adp-e-commerce\\adp-ecommerce\\client\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{5DC3FCCF-9129-207D-CAD8-1B96C9FA47E2}|Client\\client.esproj|solutionrelative:client\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{670F3F11-4E26-496F-89FA-3C79EE6FC1AF}|API\\API.csproj|c:\\users\\yavuz\\source\\repos\\adp-e-commerce\\adp-ecommerce\\api\\middlewares\\exceptionhandling.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{670F3F11-4E26-496F-89FA-3C79EE6FC1AF}|API\\API.csproj|solutionrelative:api\\middlewares\\exceptionhandling.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -50,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 498,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -62,7 +66,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\client\\.gitignore",
+              "RelativeDocumentMoniker": "client\\.gitignore",
+              "ToolTip": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\client\\.gitignore",
+              "RelativeToolTip": "client\\.gitignore",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-04-17T14:38:18.589Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "ProductDetails.tsx",
               "DocumentMoniker": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\client\\src\\pages\\catalog\\ProductDetails.tsx",
               "RelativeDocumentMoniker": "client\\src\\pages\\catalog\\ProductDetails.tsx",
@@ -74,7 +91,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Product.tsx",
               "DocumentMoniker": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\client\\src\\pages\\catalog\\Product.tsx",
               "RelativeDocumentMoniker": "client\\src\\pages\\catalog\\Product.tsx",
@@ -86,7 +103,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": ".env",
               "DocumentMoniker": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\client\\.env",
               "RelativeDocumentMoniker": "client\\.env",
@@ -98,7 +115,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "CatalogPage.tsx",
               "DocumentMoniker": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\client\\src\\pages\\catalog\\CatalogPage.tsx",
               "RelativeDocumentMoniker": "client\\src\\pages\\catalog\\CatalogPage.tsx",
@@ -110,7 +127,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "App.tsx",
               "DocumentMoniker": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\client\\src\\components\\App.tsx",
               "RelativeDocumentMoniker": "client\\src\\components\\App.tsx",
@@ -122,7 +139,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\API\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "API\\Properties\\launchSettings.json",
@@ -134,7 +151,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ExceptionHandling.cs",
               "DocumentMoniker": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\API\\Middlewares\\ExceptionHandling.cs",
               "RelativeDocumentMoniker": "API\\Middlewares\\ExceptionHandling.cs",
@@ -142,12 +159,11 @@
               "RelativeToolTip": "API\\Middlewares\\ExceptionHandling.cs",
               "ViewState": "AgIAABkAAAAAAAAAAAAkwC4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-17T06:33:42.092Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-17T06:33:42.092Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\API\\Program.cs",
               "RelativeDocumentMoniker": "API\\Program.cs",
@@ -159,7 +175,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "ProductsController.cs",
               "DocumentMoniker": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\API\\Controllers\\ProductsController.cs",
               "RelativeDocumentMoniker": "API\\Controllers\\ProductsController.cs",
@@ -171,7 +187,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "ErrorController.cs",
               "DocumentMoniker": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\API\\Controllers\\ErrorController.cs",
               "RelativeDocumentMoniker": "API\\Controllers\\ErrorController.cs",
