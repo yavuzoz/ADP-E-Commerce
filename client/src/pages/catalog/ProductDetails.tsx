@@ -1,4 +1,5 @@
-import { CircularProgress, Divider, Grid, Table, TableBody, TableCell, TableContainer, TableRow, Typography, } from '@mui/material';
+import { CircularProgress, Divider, Table, TableBody, TableCell, TableContainer, TableRow, Typography, } from '@mui/material';
+import Grid from '@mui/material/Grid';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { IProduct } from '../../model/IProduct';
@@ -10,7 +11,7 @@ export default function ProductDetailsPage() {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`http://localhost:5025/api/products/${id}`)
+        fetch(`${import.meta.env.VITE_API_URL}/api/products/${id}`)
             .then((response) => response.json())
             .then((data) => setProduct(data))
             .catch((error) => console.log(error))
@@ -25,7 +26,7 @@ export default function ProductDetailsPage() {
         <Grid container spacing={6}>
             <Grid item xs={12} sm={6} md={5} lg={4}>
                 <img
-                    src={`http://localhost:5025/images/${product.imageUrl}`}
+                    src={`${import.meta.env.VITE_API_URL}/images/${product.imageUrl}`}
                     alt={product.name}
                     style={{ width: "100%" }}
                 />

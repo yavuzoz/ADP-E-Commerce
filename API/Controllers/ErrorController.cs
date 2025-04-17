@@ -36,8 +36,7 @@ namespace API.Controllers
         [HttpGet("server-error")]
         public IActionResult ServerError()
         {
-            return Problem("An unexpected error occurred. Please try again later.");
+            throw new Exception("server error");
         }
-
     }
 }

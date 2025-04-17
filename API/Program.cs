@@ -1,6 +1,7 @@
 using API.Data;
 using Microsoft.Extensions.Configuration;
-using Microsoft.EntityFrameworkCore; 
+using Microsoft.EntityFrameworkCore;
+using API.Middlewares;
 
 namespace API
 {
@@ -20,12 +21,16 @@ namespace API
                 var serverVersion = ServerVersion.AutoDetect(connectionString); // MariaDB or MySQL
                 options.UseMySql(connectionString, serverVersion);
             });
+
+            builder.Services.AddCors();
+
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
+
+            app.UseMiddleware<ExceptionHandling>();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -35,6 +40,13 @@ namespace API
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors(opt =>
+            {
+                opt.AllowAnyHeader();
+                opt.AllowAnyMethod();
+                opt.WithOrigins("http://localhost:3000");
+            });
 
             app.UseAuthorization();
 

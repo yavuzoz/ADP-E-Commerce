@@ -11,7 +11,10 @@ interface Props {
 export default function Product({ product }: Props) {
     return (
         <Card>
-            <CardMedia sx={{ height: 160, backgroundSize: "contain" }} image={`http://localhost:5025/images/${product.imageUrl}`} />
+            <CardMedia
+                sx={{ height: 160, backgroundSize: "contain" }}
+                image={`${import.meta.env.VITE_API_URL}/images/${product.imageUrl}`}
+            />
             <CardContent>
                 <Typography gutterBottom variant="h6" component="h2" color="text.secondary">{product.name}</Typography>
                 <Typography variant="body2" color="secondary">{(product.price / 100).toFixed(2)} CHF</Typography>
