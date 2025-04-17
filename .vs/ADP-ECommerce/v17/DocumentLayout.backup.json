@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{670F3F11-4E26-496F-89FA-3C79EE6FC1AF}|API\\API.csproj|c:\\users\\yavuz\\source\\repos\\adp-e-commerce\\adp-ecommerce\\api\\middlewares\\exceptionhandling.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{670F3F11-4E26-496F-89FA-3C79EE6FC1AF}|API\\API.csproj|solutionrelative:api\\middlewares\\exceptionhandling.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5DC3FCCF-9129-207D-CAD8-1B96C9FA47E2}|Client\\client.esproj|c:\\users\\yavuz\\source\\repos\\adp-e-commerce\\adp-ecommerce\\client\\src\\pages\\catalog\\productdetails.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
       "RelativeMoniker": "D:0:0:{5DC3FCCF-9129-207D-CAD8-1B96C9FA47E2}|Client\\client.esproj|solutionrelative:client\\src\\pages\\catalog\\productdetails.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
@@ -35,10 +39,6 @@
       "RelativeMoniker": "D:0:0:{670F3F11-4E26-496F-89FA-3C79EE6FC1AF}|API\\API.csproj|solutionrelative:api\\controllers\\errorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{670F3F11-4E26-496F-89FA-3C79EE6FC1AF}|API\\API.csproj|c:\\users\\yavuz\\source\\repos\\adp-e-commerce\\adp-ecommerce\\api\\middlewares\\exceptionhandling.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{670F3F11-4E26-496F-89FA-3C79EE6FC1AF}|API\\API.csproj|solutionrelative:api\\middlewares\\exceptionhandling.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{670F3F11-4E26-496F-89FA-3C79EE6FC1AF}|API\\API.csproj|c:\\users\\yavuz\\source\\repos\\adp-e-commerce\\adp-ecommerce\\api\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{670F3F11-4E26-496F-89FA-3C79EE6FC1AF}|API\\API.csproj|solutionrelative:api\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -50,73 +50,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 498,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 8,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ProductDetails.tsx",
-              "DocumentMoniker": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\client\\src\\pages\\catalog\\ProductDetails.tsx",
-              "RelativeDocumentMoniker": "client\\src\\pages\\catalog\\ProductDetails.tsx",
-              "ToolTip": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\client\\src\\pages\\catalog\\ProductDetails.tsx",
-              "RelativeToolTip": "client\\src\\pages\\catalog\\ProductDetails.tsx",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAqwBcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-04-17T08:12:30.798Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Product.tsx",
-              "DocumentMoniker": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\client\\src\\pages\\catalog\\Product.tsx",
-              "RelativeDocumentMoniker": "client\\src\\pages\\catalog\\Product.tsx",
-              "ToolTip": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\client\\src\\pages\\catalog\\Product.tsx",
-              "RelativeToolTip": "client\\src\\pages\\catalog\\Product.tsx",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-04-17T08:11:58.085Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": ".env",
-              "DocumentMoniker": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\client\\.env",
-              "RelativeDocumentMoniker": "client\\.env",
-              "ToolTip": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\client\\.env",
-              "RelativeToolTip": "client\\.env",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-04-17T08:09:44.078Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CatalogPage.tsx",
-              "DocumentMoniker": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\client\\src\\pages\\catalog\\CatalogPage.tsx",
-              "RelativeDocumentMoniker": "client\\src\\pages\\catalog\\CatalogPage.tsx",
-              "ToolTip": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\client\\src\\pages\\catalog\\CatalogPage.tsx",
-              "RelativeToolTip": "client\\src\\pages\\catalog\\CatalogPage.tsx",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-04-17T07:58:29.958Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "App.tsx",
-              "DocumentMoniker": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\client\\src\\components\\App.tsx",
-              "RelativeDocumentMoniker": "client\\src\\components\\App.tsx",
-              "ToolTip": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\client\\src\\components\\App.tsx",
-              "RelativeToolTip": "client\\src\\components\\App.tsx",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-04-17T07:58:09.987Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
@@ -127,7 +62,67 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
+              "Title": "ProductDetails.tsx",
+              "DocumentMoniker": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\client\\src\\pages\\catalog\\ProductDetails.tsx",
+              "RelativeDocumentMoniker": "client\\src\\pages\\catalog\\ProductDetails.tsx",
+              "ToolTip": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\client\\src\\pages\\catalog\\ProductDetails.tsx",
+              "RelativeToolTip": "client\\src\\pages\\catalog\\ProductDetails.tsx",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAqwA0AAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-04-17T08:12:30.798Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Product.tsx",
+              "DocumentMoniker": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\client\\src\\pages\\catalog\\Product.tsx",
+              "RelativeDocumentMoniker": "client\\src\\pages\\catalog\\Product.tsx",
+              "ToolTip": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\client\\src\\pages\\catalog\\Product.tsx",
+              "RelativeToolTip": "client\\src\\pages\\catalog\\Product.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-04-17T08:11:58.085Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": ".env",
+              "DocumentMoniker": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\client\\.env",
+              "RelativeDocumentMoniker": "client\\.env",
+              "ToolTip": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\client\\.env",
+              "RelativeToolTip": "client\\.env",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-04-17T08:09:44.078Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CatalogPage.tsx",
+              "DocumentMoniker": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\client\\src\\pages\\catalog\\CatalogPage.tsx",
+              "RelativeDocumentMoniker": "client\\src\\pages\\catalog\\CatalogPage.tsx",
+              "ToolTip": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\client\\src\\pages\\catalog\\CatalogPage.tsx",
+              "RelativeToolTip": "client\\src\\pages\\catalog\\CatalogPage.tsx",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-04-17T07:58:29.958Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "App.tsx",
+              "DocumentMoniker": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\client\\src\\components\\App.tsx",
+              "RelativeDocumentMoniker": "client\\src\\components\\App.tsx",
+              "ToolTip": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\client\\src\\components\\App.tsx",
+              "RelativeToolTip": "client\\src\\components\\App.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-04-17T07:58:09.987Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\API\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "API\\Properties\\launchSettings.json",
@@ -135,24 +130,24 @@
               "RelativeToolTip": "API\\Properties\\launchSettings.json",
               "ViewState": "AgIAAAMAAAAAAAAAAAAIwCkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-17T06:30:12.724Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-17T06:30:12.724Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 0,
               "Title": "ExceptionHandling.cs",
               "DocumentMoniker": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\API\\Middlewares\\ExceptionHandling.cs",
               "RelativeDocumentMoniker": "API\\Middlewares\\ExceptionHandling.cs",
               "ToolTip": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\API\\Middlewares\\ExceptionHandling.cs",
               "RelativeToolTip": "API\\Middlewares\\ExceptionHandling.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAgwC8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAkwC4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-17T06:33:42.092Z"
+              "WhenOpened": "2025-04-17T06:33:42.092Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\API\\Program.cs",
               "RelativeDocumentMoniker": "API\\Program.cs",
@@ -160,8 +155,7 @@
               "RelativeToolTip": "API\\Program.cs",
               "ViewState": "AgIAABoAAAAAAAAAAAAIwCcAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-17T06:16:29.939Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-17T06:16:29.939Z"
             },
             {
               "$type": "Document",
@@ -177,7 +171,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "ErrorController.cs",
               "DocumentMoniker": "C:\\Users\\YAVUZ\\source\\repos\\ADP-E-Commerce\\ADP-ECommerce\\API\\Controllers\\ErrorController.cs",
               "RelativeDocumentMoniker": "API\\Controllers\\ErrorController.cs",
