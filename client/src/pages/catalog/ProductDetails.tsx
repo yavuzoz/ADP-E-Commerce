@@ -3,16 +3,16 @@ import Grid from '@mui/material/Grid';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { IProduct } from '../../model/IProduct';
+import requests from '../../../api/requests';
 
 export default function ProductDetailsPage() {
-    const { id } = useParams();
+    const { id } = useParams<{id: string}>();
     const [product, setProduct] = useState<IProduct | null>(null);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         setLoading(true);
-        fetch(`${import.meta.env.VITE_API_URL}/api/products/${id}`)
-            .then((response) => response.json())
+        requests.Catalog.details(Number(id))
             .then((data) => setProduct(data))
             .catch((error) => console.log(error))
             .finally(() => setLoading(false));
