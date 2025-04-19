@@ -1,12 +1,11 @@
 import { Button, ButtonGroup, Typography } from '@mui/material';
-import { useSelector, useDispatch } from "react-redux";
-import { RootState, AppDispatch } from "../../store/store";
-import { decrement, increment, incrementByAmount } from './counterSlice';
+import { decrement, increment, incrementByAmount, useAppSelector, useAppDispatch } from './counterSlice';
 
 
 export default function Counter() {
-    const count = useSelector((state: RootState) => state.counter.value);
-    const dispatch = useDispatch<AppDispatch>();
+
+    const count = useAppSelector((state) => state.counter.value)
+    const dispatch = useAppDispatch();
     return (
         <>
             <Typography>{count}</Typography>
