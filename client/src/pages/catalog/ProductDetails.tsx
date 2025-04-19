@@ -1,25 +1,46 @@
-import { CircularProgress, Divider, Table, TableBody, TableCell, TableContainer, TableRow, Typography, } from '@mui/material';
+﻿import {
+    CircularProgress, Divider, Stack, Table, TableBody,
+    TableCell, TableContainer, TableRow, Typography
+} from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { IProduct } from '../../model/IProduct';
 import requests from '../../../api/requests';
+import { AddShoppingCart } from '@mui/icons-material';
+import { LoadingButton } from '@mui/lab';
+import { useCartContext } from '../../context/CartContext';
+import { toast } from 'react-toastify';
 
 export default function ProductDetailsPage() {
-    const { id } = useParams<{id: string}>();
+    const { cart, setCart } = useCartContext(); // ✅ doğru çağrı
+    const { id } = useParams<{ id: string }>();
     const [product, setProduct] = useState<IProduct | null>(null);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [isAdded, setIsAdded] = useState(false);
+
+    const item = cart?.cartItems.find(i => i.productId === product?.id); // ✅ düzeltildi
 
     useEffect(() => {
         setLoading(true);
         requests.Catalog.details(Number(id))
-            .then((data) => setProduct(data))
-            .catch((error) => console.log(error))
+            .then((data: IProduct) => setProduct(data))
+            .catch((error: any) => console.log(error))
             .finally(() => setLoading(false));
     }, [id]);
 
-    if (loading) return <CircularProgress />;
+    function handleAddToCart(id: number) {
+        setIsAdded(true);
+        requests.Cart.addItem(id) // ✅ doğru fonksiyon adı
+            .then((cart: any) => {
+                setCart(cart);
+                toast.success("Product added to cart");
+            })
+            .catch((error: any) => console.log(error))
+            .finally(() => setIsAdded(false));
+    }
 
+    if (loading) return <CircularProgress />;
     if (!product) return <h5>Product not found</h5>;
 
     return (
@@ -57,6 +78,24 @@ export default function ProductDetailsPage() {
                         </TableBody>
                     </Table>
                 </TableContainer>
+
+                <Stack direction="row" spacing={2} alignItems="center" mt={3}>
+                    <LoadingButton
+                        variant="outlined"
+                        loadingPosition="start"
+                        startIcon={<AddShoppingCart />}
+                        loading={isAdded}
+                        onClick={() => handleAddToCart(product.id)}
+                    >
+                        Add to Cart
+                    </LoadingButton>
+
+                    {item?.quantity! > 0 && (
+                        <Typography variant="body2">
+                            {item.quantity} in your cart
+                        </Typography>
+                    )}
+                </Stack>
             </Grid>
         </Grid>
     );
