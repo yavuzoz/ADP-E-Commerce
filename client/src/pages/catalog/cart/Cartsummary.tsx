@@ -12,15 +12,15 @@ export default function CartSummary() {
         <>
             <TableRow>
                 <TableCell align="right" colSpan={5}>Subtotal</TableCell>
-                <TableCell align="right">{subtotal.toFixed(2)} CHF</TableCell>
+                <TableCell align="right">{subtotal} CHF</TableCell>
             </TableRow>
             <TableRow>
                 <TableCell align="right" colSpan={5}>Tax (20%)</TableCell>
-                <TableCell align="right">{tax.toFixed(2)} CHF</TableCell>
+                <TableCell align="right">{tax} CHF</TableCell>
             </TableRow>
             <TableRow>
                 <TableCell align="right" colSpan={5}><strong>Total</strong></TableCell>
-                <TableCell align="right"><strong>{total.toFixed(2)} CHF</strong></TableCell>
+                <TableCell align="right"><strong>{total} CHF</strong></TableCell>
             </TableRow>
         </>
     );
