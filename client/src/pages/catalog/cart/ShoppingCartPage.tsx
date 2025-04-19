@@ -57,15 +57,6 @@ export default function ShoppingCartPage() {
                             <TableCell>{item.name}</TableCell>
                             <TableCell align="right">{item.price} CHF</TableCell>
                             <TableCell align="center">
-                                <LoadingButton
-                                    loading={loading}
-                                    onClick={() => handleDeleteItem(item.productId)}
-
-                                >
-                                    <RemoveCircleOutline />
-                                </LoadingButton>
-
-                                <span style={{ margin: "0 8px" }}>{item.quantity}</span>
 
                                 <LoadingButton
                                     loading={loading}
@@ -73,6 +64,16 @@ export default function ShoppingCartPage() {
 
                                 >
                                     <AddCircleOutline />
+                                </LoadingButton>
+
+                                <span style={{ margin: "0 8px" }}>{item.quantity}</span>
+
+                                <LoadingButton
+                                    loading={loading}
+                                    onClick={() => handleDeleteItem(item.productId)}
+
+                                >
+                                    <RemoveCircleOutline />
                                 </LoadingButton>
                             </TableCell>
                             <TableCell align="right">
