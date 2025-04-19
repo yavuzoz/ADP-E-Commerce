@@ -39,14 +39,7 @@ export default function Product({ product }: Props) {
                 <Typography gutterBottom variant="h6" component="h2" color="text.secondary">{product.name}</Typography>
                 <Typography variant="body2" color="secondary">{(product.price / 100).toFixed(2)} CHF</Typography>
                 <CardActions>
-                    {/*<Button*/}
-                    {/*    variant="outlined"*/}
-                    {/*    size="small"*/}
-                    {/*    startIcon={<AddShoppingCart />}*/}
-                    {/*    color="success"*/}
-                    {/*    onClick={() => handleAddItem(product.id)}*/}
 
-                    {/*> Add to cart </Button>*/}
 
                     <LoadingButton
                         variant="outlined"
