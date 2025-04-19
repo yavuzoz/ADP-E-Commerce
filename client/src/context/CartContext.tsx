@@ -1,5 +1,5 @@
 import { Cart } from "../model/ICart";
-import { createContext } from "react";
+import { createContext, PropsWithChildren, useState } from "react";
 
 
 interface CartContextValue {
@@ -9,3 +9,15 @@ interface CartContextValue {
 }
 
 export const CartContext = createContext<CartContextValue | undefined>(undefined);
+
+export function CartContextProvider({ children }: PropsWithChildren<any>) {
+
+    const [cart, setCart] = useState<Cart | null>(null);
+
+    function deleteItem(productId: number, quantity: number) { }
+
+    return (
+
+        <CartContext.Provider value={{ cart, setCart, deleteItem }}>{children}</CartContext.Provider>
+    );
+}
