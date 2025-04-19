@@ -1,8 +1,11 @@
-import { useState } from "react";
-import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Alert } from "@mui/material";
+import {
+    TableContainer, Paper, Table, TableHead, TableRow,
+    TableCell, TableBody, Alert
+} from "@mui/material";
 import { Delete, AddCircleOutline, RemoveCircleOutline } from "@mui/icons-material";
 import { useCartContext } from "../../../context/CartContext";
 import { LoadingButton } from "@mui/lab";
+import { useState } from "react";
 import requests from "../../../../api/requests";
 
 export default function ShoppingCartPage() {
@@ -12,21 +15,21 @@ export default function ShoppingCartPage() {
     function handleAddItem(productId: number) {
         setLoading(true);
         requests.Cart.addItem(productId)
-            .then((cart) => setCart(cart))
-            .catch((error) => console.log(error))
+            .then(cart => setCart(cart))
+            .catch(error => console.log(error))
             .finally(() => setLoading(false));
     }
 
     function handleDeleteItem(productId: number, quantity = 1) {
         setLoading(true);
         requests.Cart.deleteItem(productId, quantity)
-            .then((cart) => setCart(cart))
-            .catch((error) => console.log(error))
+            .then(cart => setCart(cart))
+            .catch(error => console.log(error))
             .finally(() => setLoading(false));
     }
 
     if (cart?.cartItems.length === 0) {
-        return <Alert severity="warning">No products in your basket</Alert>;
+        return <Alert severity="warning">Cart is empty</Alert>;
     }
 
     return (
@@ -57,7 +60,7 @@ export default function ShoppingCartPage() {
                                 <LoadingButton
                                     loading={loading}
                                     onClick={() => handleDeleteItem(item.productId)}
-                                    size="small"
+
                                 >
                                     <RemoveCircleOutline />
                                 </LoadingButton>
@@ -67,7 +70,7 @@ export default function ShoppingCartPage() {
                                 <LoadingButton
                                     loading={loading}
                                     onClick={() => handleAddItem(item.productId)}
-                                    size="small"
+
                                 >
                                     <AddCircleOutline />
                                 </LoadingButton>
@@ -80,7 +83,7 @@ export default function ShoppingCartPage() {
                                     color="error"
                                     loading={loading}
                                     onClick={() => handleDeleteItem(item.productId, item.quantity)}
-                                    size="small"
+
                                 >
                                     <Delete />
                                 </LoadingButton>
