@@ -8,6 +8,8 @@ import { LoadingButton } from "@mui/lab";
 import { useState } from "react";
 import requests from "../../../../api/requests";
 import { toast } from 'react-toastify';
+// Cart summary component
+import CartSummary from "./Cartsummary";
 
 export default function ShoppingCartPage() {
     const { cart, setCart } = useCartContext();
@@ -96,6 +98,11 @@ export default function ShoppingCartPage() {
                             </TableCell>
                         </TableRow>
                     ))}
+
+                    
+                    
+                    <CartSummary />
+
                 </TableBody>
             </Table>
         </TableContainer>
