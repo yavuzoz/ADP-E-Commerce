@@ -1,22 +1,10 @@
-import { useEffect, useState } from "react";
-import request from "../../../../api/requests";
 import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, CircularProgress, IconButton } from "@mui/material";
-import { Cart } from "../../../../model/ICart";
 import { Delete } from "@mui/icons-material";
 
 export default function ShoppingCartPage() {
 
-    const [cart, setCart] = useState<Cart | null>(null); // Initialize cart as an empty array
-    const [loading, setLoading] = useState(true);
+    const { cart } = userCartContext();
 
-    useEffect(() => {
-        request.Cart.get()
-            .then((cart: any) => setCart(cart))
-            .catch((error: any) => console.log(error))
-            .finally(() => setLoading(false));
-    }, []);
-
-    if (loading) return <CircularProgress />;
 
     if (!cart) return <h1>Cart is empty</h1>;
 
@@ -42,7 +30,7 @@ export default function ShoppingCartPage() {
                             <TableCell component="th" scope="row">
                                 <img
                                     src={`${import.meta.env.VITE_API_URL}/images/${item.imageUrl}`}
-                                    style={{ height: '60px' }} 
+                                    style={{ height: '60px' }}
                                 />
 
                             </TableCell>
@@ -66,4 +54,12 @@ export default function ShoppingCartPage() {
 
 
     );
+}
+
+function userCartContext(): { cart: any; } {
+    throw new Error("Function not implemented.");
+}
+
+function setCart(cart: any): any {
+    throw new Error("Function not implemented.");
 }
