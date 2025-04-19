@@ -1,4 +1,4 @@
-import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, CircularProgress, IconButton } from "@mui/material";
+import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, CircularProgress, IconButton, Alert } from "@mui/material";
 import { Delete, AddCircleOutline, RemoveCircleOutline } from "@mui/icons-material";
 import { useCartContext } from "../../../context/CartContext";
 import { LoadingButton } from "@mui/lab";
@@ -27,7 +27,7 @@ export default function ShoppingCartPage() {
     }
 
 
-    if (!cart) return <h1>Cart is empty</h1>;
+    if (cart?.cartItems.length === 0) return <Alert severity="warning">Cart is empty</Alert>;
 
     return (
         <TableContainer component={Paper}>
@@ -43,7 +43,7 @@ export default function ShoppingCartPage() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {cart.cartItems.map((item) => (
+                    {cart?.cartItems.map((item) => (
                         <TableRow
                             key={item.productId}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
