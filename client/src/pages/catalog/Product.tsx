@@ -3,12 +3,31 @@ import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@
 import SearchIcon from "@mui/icons-material/Search";
 import { AddShoppingCart } from "@mui/icons-material";
 import { Link } from "react-router";
+import { useState } from "react";
+import request from "../../../api/requests";
+
+
 
 interface Props {
     product: IProduct;
 }
 
 export default function Product({ product }: Props) {
+
+
+    const [loading, setLoading] = useState(false);
+
+    function handleAddItem(productId: number) {
+        setLoading(true);
+
+        request.Cart.addItem(productId)
+            .then(cart => console.log(cart))
+            .catch(error => console.log(error))
+            .finally(() => setLoading(false))
+
+    }
+
+
     return (
         <Card>
             <CardMedia
@@ -19,10 +38,20 @@ export default function Product({ product }: Props) {
                 <Typography gutterBottom variant="h6" component="h2" color="text.secondary">{product.name}</Typography>
                 <Typography variant="body2" color="secondary">{(product.price / 100).toFixed(2)} CHF</Typography>
                 <CardActions>
-                    <Button variant="outlined" size="small" startIcon={<AddShoppingCart />} color="success">Add to card</Button>
+                    <Button
+                        variant="outlined"
+                        size="small"
+                        startIcon={<AddShoppingCart />}
+                        color="success"
+                        onClick={() => handleAddItem(product.id)}
+                        disabled={loading}
+                    >
+                        Add to cart
+                    </Button>
+
                     <Button component={Link} to={`/catalog/${product.id}`} variant="outlined" size="small" startIcon={<SearchIcon />} color="primary">View</Button>
                 </CardActions>
             </CardContent>
-        </Card>
+        </Card >
     );
 }

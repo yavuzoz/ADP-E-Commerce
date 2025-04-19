@@ -8,13 +8,12 @@ axios.interceptors.response.use(response => {
     return response;
 }, (error: AxiosError) => {
     const { data, status } = error.response as AxiosResponse;
-    switch(status)
-    {
+    switch (status) {
         case 400:
-            if(data.errors) {
-                const modelErrors : string[] = [];
+            if (data.errors) {
+                const modelErrors: string[] = [];
 
-                for(const key in data.errors) {
+                for (const key in data.errors) {
                     modelErrors.push(data.errors[key]);
                 }
 
@@ -39,10 +38,10 @@ axios.interceptors.response.use(response => {
 })
 
 const queries = {
-    get: (url: string) => axios.get(url).then((response: AxiosResponse) => response.data), 
-    post: (url: string, body: {}) => axios.post(url, body).then((response: AxiosResponse) => response.data), 
-    put: (url: string, body: {}) => axios.put(url, body).then((response: AxiosResponse) => response.data), 
-    delete: (url: string) => axios.delete(url).then((response: AxiosResponse) => response.data), 
+    get: (url: string) => axios.get(url).then((response: AxiosResponse) => response.data),
+    post: (url: string, body: {}) => axios.post(url, body).then((response: AxiosResponse) => response.data),
+    put: (url: string, body: {}) => axios.put(url, body).then((response: AxiosResponse) => response.data),
+    delete: (url: string) => axios.delete(url).then((response: AxiosResponse) => response.data),
 }
 
 const Errors = {
@@ -57,9 +56,16 @@ const Catalog = {
     list: () => queries.get("products"),
     details: (id: number) => queries.get(`products/${id}`)
 }
+const Cart = {
+    get: queries.get("cart"),
+    addItem: (productId: number, quantity = 1) => queries.post(`cart?productId=${productId}&quantity=${quantity}`, {}),
+    deleteItem: (productId: number, quantity = 1) => queries.delete(`cart?productId=${productId}&quantity=${quantity}`),
+}
 
 const requests = {
-    Catalog, Errors
+    Catalog, Errors, Cart
 }
+
+
 
 export default requests
