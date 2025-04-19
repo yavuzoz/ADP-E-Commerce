@@ -8,6 +8,7 @@ import request from "../../../api/requests";
 import { LoadingButton } from "@mui/lab";
 import { useCartContext } from "../../context/CartContext";
 import { toast } from 'react-toastify';
+import { currencyCHF } from "../../utils/formatCurrency";
 
 
 interface Props {
@@ -43,7 +44,7 @@ export default function Product({ product }: Props) {
             />
             <CardContent>
                 <Typography gutterBottom variant="h6" component="h2" color="text.secondary">{product.name}</Typography>
-                <Typography variant="body2" color="secondary">{(product.price / 100).toFixed(2)} CHF</Typography>
+                <Typography variant="body2" color="secondary">{currencyCHF.format(product.price)}</Typography>
                 <CardActions>
 
 
