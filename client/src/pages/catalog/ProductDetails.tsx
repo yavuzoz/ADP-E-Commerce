@@ -11,15 +11,16 @@ import { AddShoppingCart } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
 import { useCartContext } from '../../context/CartContext';
 import { toast } from 'react-toastify';
+import { currencyCHF } from "../../utils/formatCurrency";
 
 export default function ProductDetailsPage() {
-    const { cart, setCart } = useCartContext(); // ✅ doğru çağrı
+    const { cart, setCart } = useCartContext();
     const { id } = useParams<{ id: string }>();
     const [product, setProduct] = useState<IProduct | null>(null);
     const [loading, setLoading] = useState(true);
     const [isAdded, setIsAdded] = useState(false);
 
-    const item = cart?.cartItems.find(i => i.productId === product?.id); // ✅ düzeltildi
+    const item = cart?.cartItems.find(i => i.productId === product?.id);
 
     useEffect(() => {
         setLoading(true);
@@ -31,7 +32,7 @@ export default function ProductDetailsPage() {
 
     function handleAddToCart(id: number) {
         setIsAdded(true);
-        requests.Cart.addItem(id) // ✅ doğru fonksiyon adı
+        requests.Cart.addItem(id)
             .then((cart: any) => {
                 setCart(cart);
                 toast.success("Product added to cart");
@@ -57,7 +58,7 @@ export default function ProductDetailsPage() {
                 <Typography variant="h3" gutterBottom>{product.name}</Typography>
                 <Divider sx={{ mb: 2 }} />
                 <Typography variant="h4" color="secondary" gutterBottom>
-                    {(product.price / 100).toFixed(2)} CHF
+                    {currencyCHF.format(product.price)}
                 </Typography>
 
                 <TableContainer>
