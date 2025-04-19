@@ -7,7 +7,7 @@ import { useState } from "react";
 import request from "../../../api/requests";
 import { LoadingButton } from "@mui/lab";
 import { useCartContext } from "../../context/CartContext";
-
+import { toast } from 'react-toastify';
 
 
 interface Props {
@@ -25,7 +25,10 @@ export default function Product({ product }: Props) {
         setLoading(true);
 
         request.Cart.addItem(productId)
-            .then(cart => setCart(cart))
+            .then(cart => {
+                setCart(cart);
+                toast.success("Product added to cart");
+            })
             .catch(error => console.log(error))
             .finally(() => setLoading(false))
 
