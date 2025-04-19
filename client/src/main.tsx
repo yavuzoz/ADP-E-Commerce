@@ -12,14 +12,15 @@ import { store } from './store/store';
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
 
+        <Provider store={store}>
 
-        <CartContextProvider>
+            <CartContextProvider>
 
-            <RouterProvider router={router} />
+                <RouterProvider router={router} />
 
-        </CartContextProvider>
+            </CartContextProvider>
 
-
+        </Provider>
 
     </StrictMode>,
 )
