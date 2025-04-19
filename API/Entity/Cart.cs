@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace API.Entity;
 
 public class Cart
@@ -43,6 +45,8 @@ public class CartItem
     public Product Product { get; set; } = null!;
 
     public int CartId { get; set; }
+     [JsonIgnore] 
+    public Cart Cart { get; set; } = null!;
     public int Quantity { get; set; }
 
 }
