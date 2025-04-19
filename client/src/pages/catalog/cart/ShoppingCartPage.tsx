@@ -1,19 +1,6 @@
 import { useState } from "react";
-import {
-    TableContainer,
-    Paper,
-    Table,
-    TableHead,
-    TableRow,
-    TableCell,
-    TableBody,
-    Alert
-} from "@mui/material";
-import {
-    Delete,
-    AddCircleOutline,
-    RemoveCircleOutline
-} from "@mui/icons-material";
+import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Alert } from "@mui/material";
+import { Delete, AddCircleOutline, RemoveCircleOutline } from "@mui/icons-material";
 import { useCartContext } from "../../../context/CartContext";
 import { LoadingButton } from "@mui/lab";
 import requests from "../../../../api/requests";
