@@ -10,22 +10,22 @@ import requests from "../../../../api/requests";
 
 export default function ShoppingCartPage() {
     const { cart, setCart } = useCartContext();
-    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState({ loading: false, id: "" });
 
-    function handleAddItem(productId: number) {
-        setLoading(true);
+    function handleAddItem(productId: number, id: string) {
+        setStatus({ loading: true, id: id });
         requests.Cart.addItem(productId)
             .then(cart => setCart(cart))
             .catch(error => console.log(error))
-            .finally(() => setLoading(false));
+            .finally(() => setStatus({ loading: false, id: "" }));
     }
 
-    function handleDeleteItem(productId: number, quantity = 1) {
-        setLoading(true);
+    function handleDeleteItem(productId: number, id: string, quantity = 1) {
+        setStatus({ loading: true, id: id });
         requests.Cart.deleteItem(productId, quantity)
             .then(cart => setCart(cart))
             .catch(error => console.log(error))
-            .finally(() => setLoading(false));
+            .finally(() => setStatus({ loading: false, id: "" }));
     }
 
     if (cart?.cartItems.length === 0) {
@@ -59,8 +59,8 @@ export default function ShoppingCartPage() {
                             <TableCell align="center">
 
                                 <LoadingButton
-                                    loading={loading}
-                                    onClick={() => handleAddItem(item.productId)}
+                                    loading={status.loading && status.id === "add" + item.productId}
+                                    onClick={() => handleAddItem(item.productId, "add" + item.productId)}
 
                                 >
                                     <AddCircleOutline />
@@ -69,8 +69,8 @@ export default function ShoppingCartPage() {
                                 <span style={{ margin: "0 8px" }}>{item.quantity}</span>
 
                                 <LoadingButton
-                                    loading={loading}
-                                    onClick={() => handleDeleteItem(item.productId)}
+                                    loading={status.loading && status.id === "del" + item.productId}
+                                    onClick={() => handleDeleteItem(item.productId, "del" + item.productId)}
 
                                 >
                                     <RemoveCircleOutline />
@@ -82,8 +82,8 @@ export default function ShoppingCartPage() {
                             <TableCell align="right">
                                 <LoadingButton
                                     color="error"
-                                    loading={loading}
-                                    onClick={() => handleDeleteItem(item.productId, item.quantity)}
+                                    loading={status.loading && status.id === "del_all" + item.productId}
+                                    onClick={() => handleDeleteItem(item.productId, "del_all" + item.productId, item.quantity)}
 
                                 >
                                     <Delete />
@@ -95,4 +95,8 @@ export default function ShoppingCartPage() {
             </Table>
         </TableContainer>
     );
+}
+
+function setLoading(arg0: { loading: boolean; id: string; }) {
+    throw new Error("Function not implemented.");
 }
