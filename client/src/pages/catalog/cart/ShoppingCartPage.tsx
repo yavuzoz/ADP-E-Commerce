@@ -1,9 +1,10 @@
 import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, CircularProgress, IconButton } from "@mui/material";
 import { Delete } from "@mui/icons-material";
+import { useCartContext } from "../../../context/CartContext"; 
 
 export default function ShoppingCartPage() {
 
-    const { cart } = userCartContext();
+    const { cart } = useCartContext();
 
 
     if (!cart) return <h1>Cart is empty</h1>;
