@@ -1,5 +1,6 @@
 import { TableRow, TableCell } from "@mui/material";
 import { useCartContext } from "../../../context/CartContext";
+import { currencyCHF } from "../../../utils/formatCurrency";
 
 export default function CartSummary() {
     const { cart } = useCartContext();
@@ -12,15 +13,15 @@ export default function CartSummary() {
         <>
             <TableRow>
                 <TableCell align="right" colSpan={5}>Subtotal</TableCell>
-                <TableCell align="right">{subtotal} CHF</TableCell>
+                <TableCell align="right">{currencyCHF.format(subtotal)} CHF</TableCell>
             </TableRow>
             <TableRow>
                 <TableCell align="right" colSpan={5}>Tax (20%)</TableCell>
-                <TableCell align="right">{tax} CHF</TableCell>
+                <TableCell align="right">{currencyCHF.format(tax)} CHF</TableCell>
             </TableRow>
             <TableRow>
                 <TableCell align="right" colSpan={5}><strong>Total</strong></TableCell>
-                <TableCell align="right"><strong>{total} CHF</strong></TableCell>
+                <TableCell align="right"><strong>{currencyCHF.format(total)} CHF</strong></TableCell>
             </TableRow>
         </>
     );
