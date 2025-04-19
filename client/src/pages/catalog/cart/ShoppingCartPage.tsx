@@ -1,10 +1,30 @@
 import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, CircularProgress, IconButton } from "@mui/material";
-import { Delete } from "@mui/icons-material";
-import { useCartContext } from "../../../context/CartContext"; 
+import { Delete, AddCircleOutline, RemoveCircleOutline } from "@mui/icons-material";
+import { useCartContext } from "../../../context/CartContext";
+import { LoadingButton } from "@mui/lab";
+import { useState } from "react";
+import requests from "../../../../api/requests";
 
 export default function ShoppingCartPage() {
 
-    const { cart } = useCartContext();
+    const { cart, setCart } = useCartContext();
+    const [loading, setLoading] = useState(false);
+
+    function handleAddItem(productId: number) {
+        setLoading(true);
+        requests.Cart.addItem(productId)
+            .then(cart => setCart(cart))
+            .catch(error => console.log(error))
+            .finally(() => setLoading(false))
+    }
+
+    function handleDeleteItem(productId: number, quantity = 1) {
+        setLoading(true);
+        requests.Cart.deleteItem(productId, quantity)
+            .then(cart => setCart(cart))
+            .catch(error => console.log(error))
+            .finally(() => setLoading(false))
+    }
 
 
     if (!cart) return <h1>Cart is empty</h1>;
@@ -39,13 +59,21 @@ export default function ShoppingCartPage() {
                                 {item.name}
                             </TableCell>
                             <TableCell align="right">{item.price} CHF</TableCell>
-                            <TableCell align="right">{item.quantity}</TableCell>
+                            <TableCell align="right">
+
+                                <LoadingButton loading={loading} onClick={() => handleAddItem(item.productId)}><AddCircleOutline /></LoadingButton>
+
+
+                                {item.quantity}</TableCell>
+                            <LoadingButton loading={loading} onClick={() => handleDeleteItem(item.productId)}> <RemoveCircleOutline /></LoadingButton>
+
+
                             <TableCell align="right">{item.price * item.quantity} CHF</TableCell>
                             <TableCell align="right">
 
-                                <IconButton color="error">
+                                <LoadingButton color="error" loading={loading} onClick={() => handleDeleteItem(item.productId, item.quantity)}>
                                     <Delete />
-                                </IconButton>
+                                </LoadingButton>
                             </TableCell>
                         </TableRow>
                     ))}
