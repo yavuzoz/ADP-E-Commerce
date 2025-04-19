@@ -5,6 +5,7 @@ import { AddShoppingCart } from "@mui/icons-material";
 import { Link } from "react-router";
 import { useState } from "react";
 import request from "../../../api/requests";
+import { LoadingButton } from "@mui/lab";
 
 
 
@@ -38,16 +39,28 @@ export default function Product({ product }: Props) {
                 <Typography gutterBottom variant="h6" component="h2" color="text.secondary">{product.name}</Typography>
                 <Typography variant="body2" color="secondary">{(product.price / 100).toFixed(2)} CHF</Typography>
                 <CardActions>
-                    <Button
+                    {/*<Button*/}
+                    {/*    variant="outlined"*/}
+                    {/*    size="small"*/}
+                    {/*    startIcon={<AddShoppingCart />}*/}
+                    {/*    color="success"*/}
+                    {/*    onClick={() => handleAddItem(product.id)}*/}
+
+                    {/*> Add to cart </Button>*/}
+
+                    <LoadingButton
                         variant="outlined"
                         size="small"
+                        loading={loading}
+                        loadingPosition="start"
                         startIcon={<AddShoppingCart />}
-                        color="success"
                         onClick={() => handleAddItem(product.id)}
-                        disabled={loading}
+                        color="success"
+                        sx={{ textTransform: "none", minWidth: 110 }} // 
                     >
                         Add to cart
-                    </Button>
+                    </LoadingButton>
+
 
                     <Button component={Link} to={`/catalog/${product.id}`} variant="outlined" size="small" startIcon={<SearchIcon />} color="primary">View</Button>
                 </CardActions>
