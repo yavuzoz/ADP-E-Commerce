@@ -10,6 +10,8 @@ import requests from "../../../../api/requests";
 import { toast } from 'react-toastify';
 // Cart summary component
 import CartSummary from "./Cartsummary";
+import { currencyCHF } from "../../../utils/formatCurrency";
+
 
 export default function ShoppingCartPage() {
     const { cart, setCart } = useCartContext();
@@ -58,7 +60,7 @@ export default function ShoppingCartPage() {
                                 />
                             </TableCell>
                             <TableCell>{item.name}</TableCell>
-                            <TableCell align="right">{item.price} CHF</TableCell>
+                            <TableCell align="right">{currencyCHF.format(item.price)}</TableCell>
                             <TableCell align="center">
 
                                 <LoadingButton
@@ -80,7 +82,7 @@ export default function ShoppingCartPage() {
                                 </LoadingButton>
                             </TableCell>
                             <TableCell align="right">
-                                {(item.price * item.quantity).toFixed(2)} CHF
+                                {currencyCHF.format(item.price * item.quantity)} CHF
                             </TableCell>
                             <TableCell align="right">
                                 <LoadingButton
@@ -99,8 +101,8 @@ export default function ShoppingCartPage() {
                         </TableRow>
                     ))}
 
-                    
-                    
+
+
                     <CartSummary />
 
                 </TableBody>
