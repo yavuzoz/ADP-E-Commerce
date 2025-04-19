@@ -29,7 +29,7 @@ export default function ShoppingCartPage() {
     }
 
     if (cart?.cartItems.length === 0) {
-        return <Alert severity="warning">Cart is empty</Alert>;
+        return <Alert severity="warning">No products in your basket</Alert>;
     }
 
     return (
