@@ -38,8 +38,8 @@ export default function ShoppingCartPage() {
             .finally(() => setLoading(false));
     }
 
-    if (!cart || cart.cartItems.length === 0) {
-        return <Alert severity="warning">Cart is empty</Alert>;
+    if (cart?.cartItems.length === 0) {
+        return <Alert severity="warning">No products in your basket</Alert>;
     }
 
     return (
@@ -56,7 +56,7 @@ export default function ShoppingCartPage() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {cart.cartItems.map((item) => (
+                    {cart?.cartItems.map((item) => (
                         <TableRow key={item.productId}>
                             <TableCell>
                                 <img
