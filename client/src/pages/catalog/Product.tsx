@@ -36,7 +36,7 @@ export default function Product({ product }: Props) {
                     <LoadingButton
                         variant="outlined"
                         size="small"
-                        loading={status === "pending"}
+                        loading={status === "pendingAddItem" + product.id}
                         loadingPosition="start"
                         startIcon={<AddShoppingCart />}
                         onClick={() => dispatch(addItemToCart({ productId: product.id }))}

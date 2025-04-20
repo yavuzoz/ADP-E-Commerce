@@ -52,10 +52,11 @@ export const cartSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(addItemToCart.pending, (state, action) => {
             console.log(action)
-            state.status = 'pending'
+            state.status = 'pendingAddItem' + action.meta.arg.productId;
         });
 
         builder.addCase(addItemToCart.fulfilled, (state, action) => {
+            console.log(action)
             state.cart = action.payload;
             state.status = 'idle'
         });
@@ -66,7 +67,7 @@ export const cartSlice = createSlice({
 
         builder.addCase(deleteItemFromCart.pending, (state, action) => {
             console.log(action)
-            state.status = 'pending'
+            state.status = 'pendingDeleteItem'
         });
 
         builder.addCase(deleteItemFromCart.fulfilled, (state, action) => {
