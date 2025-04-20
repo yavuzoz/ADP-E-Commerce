@@ -11,12 +11,12 @@ export default function CatalogPage() {
 
 
     useEffect(() => {
-        // fetch request to get products from the server
+        setLoading(true);
         requests.Catalog.list()
             .then(data => setProducts(data))
             .finally(() => setLoading(false));
     }, []);
-
+    
     if (loading) return <CircularProgress />;
 
     return (

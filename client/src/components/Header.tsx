@@ -26,7 +26,7 @@ export default function Header(props: any) {
 
             <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
 
-                <Box sx={{ display: "flex", alingItems: "center" }}>
+                <Box sx={{ display: "flex", alignItems: "center" }}>
 
                     <Typography variant="h6">E-commerce </Typography>
                     <Stack direction="row">
