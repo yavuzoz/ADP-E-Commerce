@@ -67,7 +67,7 @@ export const cartSlice = createSlice({
 
         builder.addCase(deleteItemFromCart.pending, (state, action) => {
             console.log(action)
-            state.status = 'pendingDeleteItem'
+            state.status = 'pendingDeleteItem' + action.meta.arg.productId;
         });
 
         builder.addCase(deleteItemFromCart.fulfilled, (state, action) => {
