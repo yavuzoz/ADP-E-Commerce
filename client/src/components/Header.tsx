@@ -3,6 +3,7 @@ import { AppBar, Badge, Box, Button, Stack, Toolbar, Typography } from "@mui/mat
 import IconButton from "@mui/material/IconButton";
 import { NavLink, Link } from "react-router-dom"; // Added import from "react-router-dom"
 import { useCartContext } from "../context/CartContext";
+import { useAppSelector } from "../hooks/hooks"; // Added import from "../hooks/hooks"
 
 const links = [
     { title: "Home", to: "/" },
@@ -21,9 +22,9 @@ const navStyles = {
     "&.active": { color: "warning.main" }
 }
 
-export default function Header(props: any) {
+export default function Header() {
 
-    const { cart } = useCartContext();
+    const { cart } = useAppSelector((state => state.cart)); // Assuming you have a selector to get the cart state
     const itemcount = cart ? cart.cartItems.reduce((total, item) => total + item.quantity, 0) : 0;
 
     return (
