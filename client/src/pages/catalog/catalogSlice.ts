@@ -55,3 +55,12 @@ export const catalogSlice = createSlice({
         });
     }
 });
+
+export const {
+    selectById: selectProductById,
+    selectIds: selectProductIds,
+    selectEntities: selectProductEntities,
+    selectAll: selectAllProducts,
+    selectTotal: selectTotalProducts,
+} = productsAdapter.getSelectors((state: RootState) => state.catalog);
+
