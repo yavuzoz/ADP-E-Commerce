@@ -1,25 +1,35 @@
-import { CircularProgress, Divider, Table, TableBody, TableCell, TableContainer, TableRow, Typography, } from '@mui/material';
+﻿import {
+    CircularProgress, Divider, Stack, Table, TableBody,
+    TableCell, TableContainer, TableRow, Typography
+} from '@mui/material';
 import Grid from '@mui/material/Grid';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router';
-import { IProduct } from '../../model/IProduct';
-import requests from '../../../api/requests';
+import { AddShoppingCart } from '@mui/icons-material';
+import { LoadingButton } from '@mui/lab';
+import { currencyCHF } from "../../utils/formatCurrency";
+import { useAppSelector, useAppDispatch } from '../../hooks/hooks';
+import { addItemToCart } from './cart/cartSlice';
+import { fetchProductById, selectProductById } from './catalogSlice';
 
 export default function ProductDetailsPage() {
-    const { id } = useParams<{id: string}>();
-    const [product, setProduct] = useState<IProduct | null>(null);
-    const [loading, setLoading] = useState(false);
+    const { cart, status } = useAppSelector(state => state.cart);
+    const dispatch = useAppDispatch();
+    const { id } = useParams<{ id: string }>();
+    const product = useAppSelector(state => selectProductById(state, Number(id)));
+    const { status: loading } = useAppSelector(state => state.catalog);
+
+
+    const item = cart?.cartItems.find(i => i.productId === product?.id);
 
     useEffect(() => {
-        setLoading(true);
-        requests.Catalog.details(Number(id))
-            .then((data) => setProduct(data))
-            .catch((error) => console.log(error))
-            .finally(() => setLoading(false));
+        if (!product && id)
+            dispatch(fetchProductById(parseInt(id)))
+
     }, [id]);
 
-    if (loading) return <CircularProgress />;
 
+    if (loading === "pendingFetchProductById") return <CircularProgress />;
     if (!product) return <h5>Product not found</h5>;
 
     return (
@@ -36,7 +46,7 @@ export default function ProductDetailsPage() {
                 <Typography variant="h3" gutterBottom>{product.name}</Typography>
                 <Divider sx={{ mb: 2 }} />
                 <Typography variant="h4" color="secondary" gutterBottom>
-                    {(product.price / 100).toFixed(2)} CHF
+                    {currencyCHF.format(product.price)}
                 </Typography>
 
                 <TableContainer>
@@ -57,6 +67,24 @@ export default function ProductDetailsPage() {
                         </TableBody>
                     </Table>
                 </TableContainer>
+
+                <Stack direction="row" spacing={2} alignItems="center" mt={3}>
+                    <LoadingButton
+                        variant="outlined"
+                        loadingPosition="start"
+                        startIcon={<AddShoppingCart />}
+                        loading={status === "pendingAddItem" + product.id}
+                        onClick={() => dispatch(addItemToCart({ productId: product.id }))}
+                    >
+                        Add to Cart
+                    </LoadingButton>
+
+                    {item?.quantity! > 0 && (
+                        <Typography variant="body2">
+                            {item.quantity} in your cart
+                        </Typography>
+                    )}
+                </Stack>
             </Grid>
         </Grid>
     );

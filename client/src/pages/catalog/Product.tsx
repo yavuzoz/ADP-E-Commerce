@@ -3,12 +3,24 @@ import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@
 import SearchIcon from "@mui/icons-material/Search";
 import { AddShoppingCart } from "@mui/icons-material";
 import { Link } from "react-router";
+import { LoadingButton } from "@mui/lab";
+import { currencyCHF } from "../../utils/formatCurrency";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { addItemToCart } from "./cart/cartSlice";
+
 
 interface Props {
     product: IProduct;
 }
 
 export default function Product({ product }: Props) {
+
+    const { status } = useAppSelector(state => state.cart);
+    const dispatch = useAppDispatch();
+
+
+
+
     return (
         <Card>
             <CardMedia
@@ -17,12 +29,27 @@ export default function Product({ product }: Props) {
             />
             <CardContent>
                 <Typography gutterBottom variant="h6" component="h2" color="text.secondary">{product.name}</Typography>
-                <Typography variant="body2" color="secondary">{(product.price / 100).toFixed(2)} CHF</Typography>
+                <Typography variant="body2" color="secondary">{currencyCHF.format(product.price)}</Typography>
                 <CardActions>
-                    <Button variant="outlined" size="small" startIcon={<AddShoppingCart />} color="success">Add to card</Button>
+
+
+                    <LoadingButton
+                        variant="outlined"
+                        size="small"
+                        loading={status === "pendingAddItem" + product.id}
+                        loadingPosition="start"
+                        startIcon={<AddShoppingCart />}
+                        onClick={() => dispatch(addItemToCart({ productId: product.id }))}
+                        color="success"
+                        sx={{ textTransform: "none", minWidth: 110 }} // 
+                    >
+                        Add to cart
+                    </LoadingButton>
+
+
                     <Button component={Link} to={`/catalog/${product.id}`} variant="outlined" size="small" startIcon={<SearchIcon />} color="primary">View</Button>
                 </CardActions>
             </CardContent>
-        </Card>
+        </Card >
     );
 }
