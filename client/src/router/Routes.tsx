@@ -1,11 +1,11 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
-import App from "../components/App";
+import App from "../layout/App";
 import AboutPage from "../pages/AboutPage";
 import HomePage from "../pages/HomePage";
 import ContactPage from "../pages/ContactPage";
 import CatalogPage from "../pages/catalog/CatalogPage";
 import ProductDetailsPage from "../pages/catalog/ProductDetails";
-import ErrorPage from "../pages/catalog/ErrorPage"; // @ kullanmadýk
+import ErrorPage from "../pages/catalog/ErrorPage"; // @ kullanmadÃ½k
 import ServerError from "../errors/ServerError";
 import NotFound from "../errors/NotFound";
 import ShoppingCartPage from "../pages/catalog/cart/ShoppingCartPage";
