@@ -12,9 +12,13 @@ import { LoadingButton } from '@mui/lab';
 import { useCartContext } from '../../context/CartContext';
 import { toast } from 'react-toastify';
 import { currencyCHF } from "../../utils/formatCurrency";
+import { useAppSelector, useAppDispatch } from '../../hooks/hooks';
+import { setCart } from './cart/cartSlice';
 
 export default function ProductDetailsPage() {
-    const { cart, setCart } = useCartContext();
+    const { cart } = useAppSelector(state => state.cart);
+    const dispatch = useAppDispatch();
+
     const { id } = useParams<{ id: string }>();
     const [product, setProduct] = useState<IProduct | null>(null);
     const [loading, setLoading] = useState(true);
@@ -34,7 +38,7 @@ export default function ProductDetailsPage() {
         setIsAdded(true);
         requests.Cart.addItem(id)
             .then((cart: any) => {
-                setCart(cart);
+                dispatch(setCart(cart));
                 toast.success("Product added to cart");
             })
             .catch((error: any) => console.log(error))
