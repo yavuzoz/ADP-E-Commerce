@@ -6,9 +6,10 @@ import { Link } from "react-router";
 import { useState } from "react";
 import request from "../../../api/requests";
 import { LoadingButton } from "@mui/lab";
-import { useCartContext } from "../../context/CartContext";
 import { toast } from 'react-toastify';
 import { currencyCHF } from "../../utils/formatCurrency";
+import { useAppDispatch } from "../../hooks/hooks";
+import { setCart } from "./cart/cartSlice";
 
 
 interface Props {
@@ -19,7 +20,7 @@ export default function Product({ product }: Props) {
 
 
     const [loading, setLoading] = useState(false);
-    const { setCart } = useCartContext();
+    const dispatch = useAppDispatch();
 
 
     function handleAddItem(productId: number) {
@@ -27,7 +28,7 @@ export default function Product({ product }: Props) {
 
         request.Cart.addItem(productId)
             .then(cart => {
-                setCart(cart);
+                dispatch(setCart(cart));
                 toast.success("Product added to cart");
             })
             .catch(error => console.log(error))
