@@ -31,7 +31,7 @@ export default function ShoppingCartPage() {
     function handleDeleteItem(productId: number, id: string, quantity = 1) {
         setStatus({ loading: true, id: id });
         requests.Cart.deleteItem(productId, quantity)
-            .then(cart => setCart(cart))
+            .then(cart => dispatch(setCart(cart)))
             .catch(error => console.log(error))
             .finally(() => setStatus({ loading: false, id: "" }));
     }
