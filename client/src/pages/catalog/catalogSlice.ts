@@ -24,6 +24,7 @@ const productsAdapter = createEntityAdapter<IProduct>();
 
 const initialState = productsAdapter.getInitialState({
     status: "idle",
+    isLoaded: false,
 });
 
 //  Catalog slice
@@ -37,6 +38,7 @@ export const catalogSlice = createSlice({
         });
         builder.addCase(fetchProducts.fulfilled, (state, action) => {
             productsAdapter.setAll(state, action.payload); //  state is always first param
+            state.isLoaded = true;
             state.status = "idle";
         });
         builder.addCase(fetchProducts.rejected, (state) => {
