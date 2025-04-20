@@ -57,8 +57,9 @@ export default function ShoppingCartPage() {
                                 <span style={{ margin: "0 8px" }}>{item.quantity}</span>
 
                                 <LoadingButton
-                                    loading={status === "pendingAddItem" + item.productId}
-                                    onClick={() => dispatch(deleteItemFromCart({ productId: item.productId }))}
+                                    loading={status === "pendingDeleteItem" + item.productId + "single"}
+                                    onClick={() =>
+                                        dispatch(deleteItemFromCart({ productId: item.productId, quantity: 1, key: "single" }))}
 
                                 >
                                     <RemoveCircleOutline />
@@ -70,8 +71,10 @@ export default function ShoppingCartPage() {
                             <TableCell align="right">
                                 <LoadingButton
                                     color="error"
-                                    loading={status === "pendingAddItem" + item.productId}
-                                    onClick={() => { dispatch(deleteItemFromCart({ productId: item.productId, quantity: item.quantity })) }}
+                                    loading={status === "pendingAddItem" + item.productId + "all"}
+                                    onClick={() => {
+                                        dispatch(deleteItemFromCart({ productId: item.productId, quantity: item.quantity, key: "all" }))
+                                    }}
                                 >
                                     <Delete />
                                 </LoadingButton>
