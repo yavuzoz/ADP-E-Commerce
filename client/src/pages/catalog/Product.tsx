@@ -3,13 +3,10 @@ import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@
 import SearchIcon from "@mui/icons-material/Search";
 import { AddShoppingCart } from "@mui/icons-material";
 import { Link } from "react-router";
-import { useState } from "react";
-import request from "../../../api/requests";
 import { LoadingButton } from "@mui/lab";
-import { toast } from 'react-toastify';
 import { currencyCHF } from "../../utils/formatCurrency";
-import { useAppDispatch } from "../../hooks/hooks";
-import { setCart } from "./cart/cartSlice";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { addItemToCart } from "./cart/cartSlice";
 
 
 interface Props {
@@ -18,23 +15,10 @@ interface Props {
 
 export default function Product({ product }: Props) {
 
-
-    const [loading, setLoading] = useState(false);
+    const { status } = useAppSelector(state => state.cart);
     const dispatch = useAppDispatch();
 
 
-    function handleAddItem(productId: number) {
-        setLoading(true);
-
-        request.Cart.addItem(productId)
-            .then(cart => {
-                dispatch(setCart(cart));
-                toast.success("Product added to cart");
-            })
-            .catch(error => console.log(error))
-            .finally(() => setLoading(false))
-
-    }
 
 
     return (
@@ -52,10 +36,10 @@ export default function Product({ product }: Props) {
                     <LoadingButton
                         variant="outlined"
                         size="small"
-                        loading={loading}
+                        loading={status === "pending"}
                         loadingPosition="start"
                         startIcon={<AddShoppingCart />}
-                        onClick={() => handleAddItem(product.id)}
+                        onClick={() => dispatch(addItemToCart({ productId: product.id }))}
                         color="success"
                         sx={{ textTransform: "none", minWidth: 110 }} // 
                     >
