@@ -2,7 +2,6 @@ import { ShoppingCart } from "@mui/icons-material";
 import { AppBar, Badge, Box, Button, Stack, Toolbar, Typography } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import { NavLink, Link } from "react-router-dom"; // Added import from "react-router-dom"
-import { useCartContext } from "../context/CartContext";
 import { useAppSelector } from "../hooks/hooks"; // Added import from "../hooks/hooks"
 
 const links = [
