@@ -9,20 +9,17 @@ import { IProduct } from '../../model/IProduct';
 import requests from '../../../api/requests';
 import { AddShoppingCart } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
-import { useCartContext } from '../../context/CartContext';
-import { toast } from 'react-toastify';
 import { currencyCHF } from "../../utils/formatCurrency";
 import { useAppSelector, useAppDispatch } from '../../hooks/hooks';
-import { setCart } from './cart/cartSlice';
+import { addItemToCart } from './cart/cartSlice';
 
 export default function ProductDetailsPage() {
-    const { cart } = useAppSelector(state => state.cart);
+    const { cart, status } = useAppSelector(state => state.cart);
     const dispatch = useAppDispatch();
 
     const { id } = useParams<{ id: string }>();
     const [product, setProduct] = useState<IProduct | null>(null);
     const [loading, setLoading] = useState(true);
-    const [isAdded, setIsAdded] = useState(false);
 
     const item = cart?.cartItems.find(i => i.productId === product?.id);
 
@@ -34,16 +31,6 @@ export default function ProductDetailsPage() {
             .finally(() => setLoading(false));
     }, [id]);
 
-    function handleAddToCart(id: number) {
-        setIsAdded(true);
-        requests.Cart.addItem(id)
-            .then((cart: any) => {
-                dispatch(setCart(cart));
-                toast.success("Product added to cart");
-            })
-            .catch((error: any) => console.log(error))
-            .finally(() => setIsAdded(false));
-    }
 
     if (loading) return <CircularProgress />;
     if (!product) return <h5>Product not found</h5>;
@@ -89,8 +76,8 @@ export default function ProductDetailsPage() {
                         variant="outlined"
                         loadingPosition="start"
                         startIcon={<AddShoppingCart />}
-                        loading={isAdded}
-                        onClick={() => handleAddToCart(product.id)}
+                        loading={status === "pendingAddItem" + product.id}
+                        onClick={() => dispatch(addItemToCart({ productId: product.id }))}
                     >
                         Add to Cart
                     </LoadingButton>
