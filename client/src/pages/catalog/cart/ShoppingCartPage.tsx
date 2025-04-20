@@ -3,7 +3,6 @@ import {
     TableCell, TableBody, Alert
 } from "@mui/material";
 import { Delete, AddCircleOutline, RemoveCircleOutline } from "@mui/icons-material";
-import { useCartContext } from "../../../context/CartContext";
 import { LoadingButton } from "@mui/lab";
 import { useState } from "react";
 import requests from "../../../../api/requests";
@@ -11,18 +10,22 @@ import { toast } from 'react-toastify';
 // Cart summary component
 import CartSummary from "./Cartsummary";
 import { currencyCHF } from "../../../utils/formatCurrency";
+import { useAppSelector, useAppDispatch } from "../../../hooks/hooks";
+import { setCart } from "./cartSlice";
 
 
 export default function ShoppingCartPage() {
-    const { cart, setCart } = useCartContext();
+    const { cart } = useAppSelector(state => state.cart);
+    const dispatch = useAppDispatch();
     const [status, setStatus] = useState({ loading: false, id: "" });
 
     function handleAddItem(productId: number, id: string) {
         setStatus({ loading: true, id: id });
         requests.Cart.addItem(productId)
-            .then(cart => setCart(cart))
+            .then(cart => dispatch(setCart(cart)))
             .catch(error => console.log(error))
             .finally(() => setStatus({ loading: false, id: "" }));
+
     }
 
     function handleDeleteItem(productId: number, id: string, quantity = 1) {
