@@ -8,6 +8,8 @@ using API.Middlewares;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.OpenApi.Models;
+using Scalar.AspNetCore;
 
 namespace API
 {
@@ -65,40 +67,39 @@ namespace API
                 });
 
             builder.Services.AddControllers();
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+builder.Services.AddOpenApi();
+builder.Services.AddScoped<TokenService>();
 
-            builder.Services.AddScoped<TokenService>();
+var app = builder.Build();
 
-            var app = builder.Build();
+app.UseMiddleware<ExceptionHandling>();
 
-            app.UseMiddleware<ExceptionHandling>();
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.MapOpenApi();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/openapi/v1.json", "Demo API");
+    });
+    app.MapScalarApiReference();
+}
 
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+app.UseHttpsRedirection();
 
-            app.UseHttpsRedirection();
+app.UseStaticFiles();
 
-            app.UseCors(opt =>
-            {
-                opt.AllowAnyHeader();
-                opt.AllowAnyMethod();
-                opt.AllowCredentials();
-                opt.WithOrigins("http://localhost:3000");
-            });
+app.UseCors(opt =>
+{
+    opt.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:3000");
+});
 
-            app.UseAuthentication();
-            app.UseAuthorization();
+app.UseAuthentication();
+app.UseAuthorization();
+app.MapControllers();
 
-            app.MapControllers();
+SeedDatabase.Initialize(app);
 
-            SeedDatabase.Initialize(app);
-
-            app.Run();
-        }
-    }
+app.Run();}}
 }
