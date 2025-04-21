@@ -17,7 +17,6 @@ public class CartController : ControllerBase
         _context = context;
     }
 
-    [Authorize]
     [HttpGet]
     public async Task<ActionResult<CartDTO>> GetCart()
     {
