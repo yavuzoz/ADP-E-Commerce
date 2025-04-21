@@ -1,5 +1,7 @@
 using API.Data;
 using API.Entity;
+using API.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using API.Middlewares;
@@ -41,6 +43,8 @@ namespace API
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddScoped<TokenService>();
 
             var app = builder.Build();
 
