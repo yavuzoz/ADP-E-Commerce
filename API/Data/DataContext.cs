@@ -1,10 +1,11 @@
 ﻿using API.Entity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
 namespace API.Data
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<AppUser, AppRole, string>
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {

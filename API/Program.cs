@@ -1,4 +1,5 @@
 using API.Data;
+using API.Entity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using API.Middlewares;
@@ -23,6 +24,8 @@ namespace API
             });
 
             builder.Services.AddCors();
+            builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<DataContext>();
+
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
