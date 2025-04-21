@@ -41,7 +41,9 @@ public class TokenService
         {
             Subject = new ClaimsIdentity(claims),
             Expires = DateTime.Now.AddDays(30),
-            SigningCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature)
+            SigningCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature),
+            Issuer = "adp-ecommerce.com",
+            Audience = "abc"
         };
 
         var token = tokenHandler.CreateToken(tokenSettings);
