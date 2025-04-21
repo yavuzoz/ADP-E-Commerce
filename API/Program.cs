@@ -56,6 +56,8 @@ namespace API
 
             app.MapControllers();
 
+            SeedDatabase.Initialize(app);
+
             app.Run();
         }
     }
