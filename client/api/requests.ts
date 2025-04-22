@@ -64,8 +64,9 @@ const Cart = {
 }
 
 const Account = {
-    login: (FormData: any) => queries.post("account/login", FormData),
-    register: (FormData: any) => queries.post("account/register", FormData),
+    login: (formData: any) => queries.post("account/login", formData),
+    register: (formData: any) => queries.post("account/register", formData),
+    getUser: () => queries.get("account/getuser")
 }
 
 const requests = {
