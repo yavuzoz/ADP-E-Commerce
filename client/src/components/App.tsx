@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import requests from "../../api/requests";
 import { useAppDispatch } from "../hooks/hooks";
 import { setCart } from "../pages/catalog/cart/cartSlice"; // Added import
-import { setUser } from "../pages/account/accountSlice"; // Added import 
+import { setUser, logout } from "../pages/account/accountSlice"; // Added import 
 import Header from "./Header";
 function App() {
 
@@ -19,14 +19,18 @@ function App() {
         requests.Account.getUser()
             .then(user => {
                 setUser(user);
-                localStorage.setItem("user", user);
+                localStorage.setItem("user", JSON.stringify(user));
             })
-            .catch(error => console.log(error));
+            .catch(error => {
+                console.log(error);
+                dispatch(logout());
+            });
 
         requests.Cart.get()
             .then(cart => dispatch(setCart(cart)))
             .catch(error => console.log(error))
             .finally(() => setLoading(false));
+
     }, []);
 
     if (loading) return <CircularProgress />;

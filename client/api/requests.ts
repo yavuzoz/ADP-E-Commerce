@@ -13,7 +13,6 @@ axios.interceptors.request.use(request => {
     return request;
 })
 
-
 axios.interceptors.response.use(response => {
     return response;
 }, (error: AxiosError) => {
@@ -66,10 +65,11 @@ const Catalog = {
     list: () => queries.get("products"),
     details: (id: number) => queries.get(`products/${id}`)
 }
+
 const Cart = {
     get: () => queries.get("cart"),
     addItem: (productId: number, quantity = 1) => queries.post(`cart?productId=${productId}&quantity=${quantity}`, {}),
-    deleteItem: (productId: number, quantity = 1) => queries.delete(`cart?productId=${productId}&quantity=${quantity}`),
+    deleteItem: (productId: number, quantity = 1) => queries.delete(`cart?productId=${productId}&quantity=${quantity}`)
 }
 
 const Account = {
@@ -81,7 +81,5 @@ const Account = {
 const requests = {
     Catalog, Errors, Cart, Account
 }
-
-
 
 export default requests
