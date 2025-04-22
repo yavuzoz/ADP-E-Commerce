@@ -10,14 +10,23 @@ import { setCart } from "../pages/catalog/cart/cartSlice"; // Added import
 
 function App() {
 
-    const distpatch = useAppDispatch();
+    const dispatch = useAppDispatch();
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        dispatch(setUser(JSON.parse(localStorage.getItem("user")!)));
+
+        requests.Account.getUser()
+            .then(user => {
+                setUser(user);
+                localStorage.setItem("user", user);
+            })
+            .catch(error => console.log(error));
+
         requests.Cart.get()
-            .then(cart => distpatch(setCart(cart)))
+            .then(cart => dispatch(setCart(cart)))
             .catch(error => console.log(error))
-            .finally(() => setLoading(false))
+            .finally(() => setLoading(false));
     }, []);
 
     if (loading) return <CircularProgress />;
@@ -31,7 +40,11 @@ function App() {
                 <Outlet />
             </Container>
         </>
-    );
+    )
 }
 
 export default App
+
+function setUser(arg0: any): any {
+    throw new Error("Function not implemented.");
+}
