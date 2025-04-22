@@ -3,33 +3,21 @@ import { Container, CssBaseline, CircularProgress } from "@mui/material";
 import { Outlet } from "react-router";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import requests from "../../api/requests";
 import { useAppDispatch } from "../hooks/hooks";
-import { setCart } from "../pages/catalog/cart/cartSlice"; // Added import
-import { setUser, logout } from "../pages/account/accountSlice"; // Added import 
 import Header from "./Header";
 function App() {
 
     const dispatch = useAppDispatch();
     const [loading, setLoading] = useState(true);
 
+    const initApp = async () => {
+        await dispatch(getCart());
+        await dispatch(getUser());
+    }
+
     useEffect(() => {
-        dispatch(setUser(JSON.parse(localStorage.getItem("user")!)));
 
-        requests.Account.getUser()
-            .then(user => {
-                setUser(user);
-                localStorage.setItem("user", JSON.stringify(user));
-            })
-            .catch(error => {
-                console.log(error);
-                dispatch(logout());
-            });
-
-        requests.Cart.get()
-            .then(cart => dispatch(setCart(cart)))
-            .catch(error => console.log(error))
-            .finally(() => setLoading(false));
+        initApp().then(() => setLoading(false));
 
     }, []);
 
@@ -48,3 +36,12 @@ function App() {
 }
 
 export default App
+
+function getCart(): any {
+    throw new Error("Function not implemented.");
+}
+
+
+function getUser(): any {
+    throw new Error("Function not implemented.");
+} 
