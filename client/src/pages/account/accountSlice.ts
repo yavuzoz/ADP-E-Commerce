@@ -38,13 +38,14 @@ export const accountSlice = createSlice({
         },
         setUser: (state, action) => {
             state.user = action.payload;
-        },
+        }
+    },
+    extraReducers: (builder) => {
+        builder.addCase(loginUser.fulfilled, (state, action) => {
+            state.user = action.payload;
+        });
+    }
+});
 
-        extraReducers: (builder => {
-            builder.addCase(loginUser.fulfilled, (state, action) => {
-                state.user = action.payload;
-            })
-        })
-    })
 
-export const { logout } = accountSlice.actions;
+export const { logout, setUser } = accountSlice.actions;

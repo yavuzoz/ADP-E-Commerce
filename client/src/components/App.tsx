@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import requests from "../../api/requests";
 import { useAppDispatch } from "../hooks/hooks";
 import { setCart } from "../pages/catalog/cart/cartSlice"; // Added import
-
+import { setUser } from "../pages/account/accountSlice"; // Added import 
 function App() {
 
     const dispatch = useAppDispatch();
@@ -44,7 +44,3 @@ function App() {
 }
 
 export default App
-
-function setUser(arg0: any): any {
-    throw new Error("Function not implemented.");
-}
