@@ -1,9 +1,9 @@
 using API.Data;
 using API.DTO;
 using API.Entity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers;
 
@@ -20,13 +20,13 @@ public class CartController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<CartDTO>> GetCart()
     {
-        return CartToDTO(await GetOrCreate());
+        return CartToDTO(await GetOrCreate(GetCustomerId()));
     }
 
     [HttpPost]
     public async Task<ActionResult> AddItemToCart(int productId, int quantity)
     {
-        var cart = await GetOrCreate();
+        var cart = await GetOrCreate(GetCustomerId());
 
         var product = await _context.Products.FirstOrDefaultAsync(i => i.Id == productId);
 
@@ -46,7 +46,7 @@ public class CartController : ControllerBase
     [HttpDelete]
     public async Task<ActionResult> DeleteItemFromCart(int productId, int quantity)
     {
-        var cart = await GetOrCreate();
+        var cart = await GetOrCreate(GetCustomerId());
 
         cart.DeleteItem(productId, quantity);
 
@@ -58,25 +58,34 @@ public class CartController : ControllerBase
         return BadRequest(new ProblemDetails { Title = "Problem removing item from the cart" });
     }
 
-    private async Task<Cart> GetOrCreate()
+    private string GetCustomerId()
+    {
+        return User.Identity?.Name ?? Request.Cookies["customerId"]!;
+    }
+    private async Task<Cart> GetOrCreate(string custId)
     {
         var cart = await _context.Carts
                     .Include(i => i.CartItems)
                     .ThenInclude(i => i.Product)
-                    .Where(i => i.CustomerId == Request.Cookies["customerId"])
+                    .Where(i => i.CustomerId == custId)
                     .FirstOrDefaultAsync();
 
         if (cart == null)
         {
-            var customerId = Guid.NewGuid().ToString();
+            var customerId = User.Identity?.Name;
 
-            var cookieOptions = new CookieOptions
+            if (string.IsNullOrEmpty(customerId))
             {
-                Expires = DateTime.Now.AddMonths(1),
-                IsEssential = true
-            };
+                customerId = Guid.NewGuid().ToString();
+                var cookieOptions = new CookieOptions
+                {
+                    Expires = DateTime.Now.AddMonths(1),
+                    IsEssential = true
+                };
 
-            Response.Cookies.Append("customerId", customerId, cookieOptions);
+                Response.Cookies.Append("customerId", customerId, cookieOptions);
+            }
+
             cart = new Cart { CustomerId = customerId };
 
             _context.Carts.Add(cart);
