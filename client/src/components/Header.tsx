@@ -12,6 +12,11 @@ const links = [
     { title: "Error", to: "/error" },
 ]
 
+const autLinks = [
+    { title: "Login", to: "/login" },
+    { title: "Register", to: "/logiregister" },
+]
+
 const navStyles = {
     color: "inherit",
     textDecoration: "none",
@@ -34,6 +39,8 @@ export default function Header() {
                 <Box sx={{ display: "flex", alignItems: "center" }}>
 
                     <Typography variant="h6">E-commerce </Typography>
+
+
                     <Stack direction="row">
                         {
                             links.map(link =>
@@ -53,6 +60,13 @@ export default function Header() {
                         </Badge>
                     </IconButton>
 
+                    <Stack direction="row">
+                        {
+                            autLinks.map(link =>
+                                <Button key={link.to} component={NavLink} to={link.to} sx={navStyles}>{link.title}</Button>
+                            )
+                        }
+                    </Stack>
 
                 </Box>
 
