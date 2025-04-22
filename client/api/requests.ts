@@ -63,8 +63,13 @@ const Cart = {
     deleteItem: (productId: number, quantity = 1) => queries.delete(`cart?productId=${productId}&quantity=${quantity}`),
 }
 
+const Account = {
+    login: (FormData: any) => queries.post("account/login", FormData),
+    register: (FormData: any) => queries.post("account/register", FormData),
+}
+
 const requests = {
-    Catalog, Errors, Cart
+    Catalog, Errors, Cart, Account
 }
 
 
