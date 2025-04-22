@@ -35,13 +35,16 @@ export const accountSlice = createSlice({
             state.user = null;
             localStorage.removeItem("user");
             router.navigate("/catalog");
-        }
-    },
-    extraReducers: (builder => {
-        builder.addCase(loginUser.fulfilled, (state, action) => {
+        },
+        setUser: (state, action) => {
             state.user = action.payload;
+        },
+
+        extraReducers: (builder => {
+            builder.addCase(loginUser.fulfilled, (state, action) => {
+                state.user = action.payload;
+            })
         })
     })
-})
 
 export const { logout } = accountSlice.actions;
