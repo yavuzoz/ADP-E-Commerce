@@ -5,6 +5,7 @@ import { LoadingButton } from "@mui/lab";
 import { useNavigate } from "react-router";
 import { loginUser } from "./accountSlice";
 import { useAppDispatch } from "../../store/store";
+import { getCart } from "../catalog/cart/cartSlice"; // Added import
 
 export default function LoginPage() {
     const dispatch = useAppDispatch();
@@ -19,6 +20,7 @@ export default function LoginPage() {
 
     async function submitForm(data: FieldValues) {
         await dispatch(loginUser(data));
+        await dispatch(getCart());
         navigate("/catalog");
     }
 
