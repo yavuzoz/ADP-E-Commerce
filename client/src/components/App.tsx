@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Header from "./Header";
 import { Container, CssBaseline, CircularProgress } from "@mui/material";
 import { Outlet } from "react-router";
 import { ToastContainer } from "react-toastify";
@@ -8,6 +7,7 @@ import requests from "../../api/requests";
 import { useAppDispatch } from "../hooks/hooks";
 import { setCart } from "../pages/catalog/cart/cartSlice"; // Added import
 import { setUser } from "../pages/account/accountSlice"; // Added import 
+import Header from "./Header";
 function App() {
 
     const dispatch = useAppDispatch();
