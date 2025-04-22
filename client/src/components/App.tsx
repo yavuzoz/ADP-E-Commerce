@@ -3,8 +3,12 @@ import { Container, CssBaseline, CircularProgress } from "@mui/material";
 import { Outlet } from "react-router";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import { useAppDispatch } from "../hooks/hooks";
+import { useAppDispatch } from "../store/store"; // Added import
+import { getCart } from "../pages/catalog/cart/cartSlice";
 import Header from "./Header";
+import { getUser } from "../pages/account/accountSlice";
+
+
 function App() {
 
     const dispatch = useAppDispatch();
@@ -36,12 +40,3 @@ function App() {
 }
 
 export default App
-
-function getCart(): any {
-    throw new Error("Function not implemented.");
-}
-
-
-function getUser(): any {
-    throw new Error("Function not implemented.");
-} 

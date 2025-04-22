@@ -8,9 +8,9 @@ import { useParams } from 'react-router';
 import { AddShoppingCart } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
 import { currencyCHF } from "../../utils/formatCurrency";
-import { useAppSelector, useAppDispatch } from '../../hooks/hooks';
 import { addItemToCart } from './cart/cartSlice';
 import { fetchProductById, selectProductById } from './catalogSlice';
+import { useAppSelector, useAppDispatch } from '../../store/store';
 
 export default function ProductDetailsPage() {
     const { cart, status } = useAppSelector(state => state.cart);

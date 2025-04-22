@@ -7,8 +7,8 @@ import { LoadingButton } from "@mui/lab";
 // Cart summary component
 import CartSummary from "./Cartsummary";
 import { currencyCHF } from "../../../utils/formatCurrency";
-import { useAppSelector, useAppDispatch } from "../../../hooks/hooks";
 import { addItemToCart, deleteItemFromCart } from "./cartSlice";
+import { useAppSelector, useAppDispatch } from "../../../store/store";
 
 
 export default function ShoppingCartPage() {

@@ -3,8 +3,8 @@ import { Avatar, Box, Container, Paper, TextField, Typography } from "@mui/mater
 import { FieldValues, useForm } from "react-hook-form";
 import { LoadingButton } from "@mui/lab";
 import { useNavigate } from "react-router";
-import { useAppDispatch } from "../../hooks/hooks";
 import { loginUser } from "./accountSlice";
+import { useAppDispatch } from "../../store/store";
 
 export default function LoginPage() {
     const dispatch = useAppDispatch();

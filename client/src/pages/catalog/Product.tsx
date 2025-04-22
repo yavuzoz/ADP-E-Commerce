@@ -5,8 +5,8 @@ import { AddShoppingCart } from "@mui/icons-material";
 import { Link } from "react-router";
 import { LoadingButton } from "@mui/lab";
 import { currencyCHF } from "../../utils/formatCurrency";
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { addItemToCart } from "./cart/cartSlice";
+import { useAppSelector, useAppDispatch } from "../../store/store";
 
 
 interface Props {
