@@ -4,6 +4,7 @@ import IconButton from "@mui/material/IconButton";
 import { NavLink, Link } from "react-router-dom"; // Added import from "react-router-dom"
 import { logout } from "../pages/account/accountSlice"; // Added import for logout action
 import { useAppSelector, useAppDispatch } from "../store/store";
+import { clearCart } from "../pages/catalog/cart/cartSlice";
 
 const links = [
     { title: "Home", to: "/" },
@@ -61,7 +62,12 @@ export default function Header() {
                         user ? (
                             <Stack direction="row">
                                 <Button sx={navStyles}>{user.name}</Button>
-                                <Button sx={navStyles} onClick={() => dispatch(logout())}>Log Out</Button>
+                                <Button sx={navStyles}
+                                    onClick={() => {
+                                        dispatch(logout())
+                                        dispatch(clearCart())
+                                    }}>
+                                    Log Out</Button>
                             </Stack>
                         ) : (
                             <Stack direction="row">
