@@ -22,6 +22,8 @@ export const router = createBrowserRouter([
             { path: "catalog", element: <CatalogPage /> },
             { path: "catalog/:id", element: <ProductDetailsPage /> },
             { path: "cart", element: <ShoppingCartPage /> },
+            { path: "login", element: <LoginPage /> },
+            { path: "register", element: <RegisterPage /> },
             { path: "error", element: <ErrorPage /> },
             { path: "server-error", element: <ServerError /> },
             { path: "not-found", element: <NotFound /> },
