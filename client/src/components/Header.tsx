@@ -14,7 +14,7 @@ const links = [
 
 const autLinks = [
     { title: "Login", to: "/login" },
-    { title: "Register", to: "/logiregister" },
+    { title: "Register", to: "/register" },
 ]
 
 const navStyles = {
