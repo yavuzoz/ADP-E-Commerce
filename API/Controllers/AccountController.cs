@@ -1,6 +1,7 @@
 using API.DTO;
 using API.Entity;
 using API.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -67,6 +68,25 @@ public class AccountController : ControllerBase
         }
 
         return BadRequest(result.Errors);
+    }
+
+
+    [Authorize]
+    [HttpGet("getuser")]
+    public async Task<ActionResult<UserDTO>> GetUser()
+    {
+        var user = await _userManager.FindByNameAsync(User.Identity?.Name!);
+
+        if (user == null)
+        {
+            return BadRequest(new ProblemDetails { Title = "username incorrect" });
+        }
+
+        return new UserDTO
+        {
+            Name = user.Name!,
+            Token = await _tokenService.GenerateToken(user)
+        };
     }
 
 }
