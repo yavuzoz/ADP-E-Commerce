@@ -13,6 +13,7 @@ namespace API.Data
 
         public DbSet<Product> Products => Set<Product>();
         public DbSet<Cart> Carts => Set<Cart>();
+        public DbSet<Order> Orders => Set<Order>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
