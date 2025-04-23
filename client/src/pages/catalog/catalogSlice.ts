@@ -1,6 +1,7 @@
-import { IProduct } from '../model/IProduct';
+import { IProduct } from '@/model/IProduct';
 import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import requests from "../../../api/requests";
+import { RootState } from '../../store/store'; 
 
 
 //Async thunk to fetch all products

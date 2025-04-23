@@ -5,11 +5,12 @@ import HomePage from "../pages/HomePage";
 import ContactPage from "../pages/ContactPage";
 import CatalogPage from "../pages/catalog/CatalogPage";
 import ProductDetailsPage from "../pages/catalog/ProductDetails";
-import ErrorPage from "../pages/catalog/ErrorPage"; // @ kullanmadýk
+import ErrorPage from "../pages/catalog/ErrorPage"; 
 import ServerError from "../errors/ServerError";
 import NotFound from "../errors/NotFound";
 import ShoppingCartPage from "../pages/catalog/cart/ShoppingCartPage";
 import RegisterPage from "../pages/account/RegisterPage";
+import CheckoutPage from "../pages/checkout/CheckoutPage";
 import LoginPage from "../pages/account/loginPage";
 
 
@@ -26,6 +27,7 @@ export const router = createBrowserRouter([
             { path: "cart", element: <ShoppingCartPage /> },
             { path: "login", element: <LoginPage /> },
             { path: "register", element: <RegisterPage /> },
+            { path: "checkout", element: <CheckoutPage /> },
             { path: "error", element: <ErrorPage /> },
             { path: "server-error", element: <ServerError /> },
             { path: "not-found", element: <NotFound /> },

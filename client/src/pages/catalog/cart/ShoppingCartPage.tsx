@@ -1,97 +1,80 @@
-import {
-    TableContainer, Paper, Table, TableHead, TableRow,
-    TableCell, TableBody, Alert
-} from "@mui/material";
-import { Delete, AddCircleOutline, RemoveCircleOutline } from "@mui/icons-material";
+import { Alert, Box, Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { AddCircleOutline, Delete, RemoveCircleOutline } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
-// Cart summary component
 import CartSummary from "./Cartsummary";
-import { currencyCHF } from "../../../utils/formatCurrency";
+import { currencyCHF } from "@/utils/formatCurrency";
 import { addItemToCart, deleteItemFromCart } from "./cartSlice";
-import { useAppSelector, useAppDispatch } from "../../../store/store";
+import { useAppDispatch, useAppSelector } from "@/store/store";
+import { Link } from "react-router";
 
-
-export default function ShoppingCartPage() {
+export default function ShoppingCartPage()
+{
     const { cart, status } = useAppSelector(state => state.cart);
     const dispatch = useAppDispatch();
 
-
-    if (cart?.cartItems.length === 0) {
-        return <Alert severity="warning">No products in your basket</Alert>;
-    }
+    if(!cart || cart?.cartItems.length === 0) return <Alert severity="warning">Sepetinizde ürün yok</Alert>
 
     return (
+      <>
         <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="cart table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell></TableCell>
-                        <TableCell>Product</TableCell>
-                        <TableCell align="right">Price</TableCell>
-                        <TableCell align="center">Quantity</TableCell>
-                        <TableCell align="right">Total</TableCell>
-                        <TableCell align="right"></TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {cart?.cartItems.map((item) => (
-                        <TableRow key={item.productId}>
-                            <TableCell>
-                                <img
-                                    src={`${import.meta.env.VITE_API_URL}/images/${item.imageUrl}`}
-                                    style={{ height: "60px" }}
-                                />
-                            </TableCell>
-                            <TableCell>{item.name}</TableCell>
-                            <TableCell align="right">{currencyCHF.format(item.price)}</TableCell>
-                            <TableCell align="center">
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell></TableCell>
+              <TableCell></TableCell>
+              <TableCell align="right">Fiyat</TableCell>
+              <TableCell align="right">Adet</TableCell>
+              <TableCell align="right">Toplam</TableCell>
+              <TableCell align="right"></TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {cart?.cartItems.map((item) => (
+              <TableRow
+                key={item.productId}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                 <TableCell component="th" scope="row">
+                  <img src={`http://localhost:5291/images/${item.imageUrl}`} style={{height: 60}}/>
+                </TableCell>
+                <TableCell component="th" scope="row">
+                  {item.name}
+                </TableCell>
+                <TableCell align="right">{ currencyCHF.format(item.price)}</TableCell>
+                <TableCell align="right">
+                  <LoadingButton 
+                    loading={status === "pendingAddItem" + item.productId} 
+                    onClick={() => dispatch(addItemToCart({ productId: item.productId}))}>
+                    <AddCircleOutline />
+                  </LoadingButton>
+                  {item.quantity}
+                  <LoadingButton 
+                    loading={status === "pendingDeleteItem" + item.productId + "single"} 
+                    onClick={() => 
+                      dispatch(deleteItemFromCart({ productId: item.productId, quantity: 1, key: "single"}))}>
+                    <RemoveCircleOutline />
+                  </LoadingButton>
+                  </TableCell>
+                <TableCell align="right">{currencyCHF.format(item.price * item.quantity)} ₺</TableCell>
+                <TableCell align="right">
+                    <LoadingButton color="error" 
+                      loading={status === "pendingDeleteItem" + item.productId + "all"} 
+                      onClick={() => 
+                        dispatch(deleteItemFromCart({ productId: item.productId, quantity: item.quantity, key: "all"}))}>
+                        <Delete />
+                    </LoadingButton>
+                </TableCell>
+              </TableRow>
+            ))}
+            {/* cart summary */}
+            <CartSummary />
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <Box display="flex" justifyContent="flex-end" sx={{mt: 3}}>
+        <Button component={Link} to="/checkout" variant="contained" color="primary">Checkout</Button>
+      </Box>
+      </>
 
-                                <LoadingButton
-                                    loading={status === "pendingAddItem" + item.productId}
-                                    onClick={() => dispatch(addItemToCart({ productId: item.productId }))}
-
-                                >
-                                    <AddCircleOutline />
-                                </LoadingButton>
-
-                                <span style={{ margin: "0 8px" }}>{item.quantity}</span>
-
-                                <LoadingButton
-                                    loading={status === "pendingDeleteItem" + item.productId + "single"}
-                                    onClick={() =>
-                                        dispatch(deleteItemFromCart({ productId: item.productId, quantity: 1, key: "single" }))}
-
-                                >
-                                    <RemoveCircleOutline />
-                                </LoadingButton>
-                            </TableCell>
-                            <TableCell align="right">
-                                {currencyCHF.format(item.price * item.quantity)} CHF
-                            </TableCell>
-                            <TableCell align="right">
-                                <LoadingButton
-                                    color="error"
-                                    loading={status === "pendingAddItem" + item.productId + "all"}
-                                    onClick={() => {
-                                        dispatch(deleteItemFromCart({ productId: item.productId, quantity: item.quantity, key: "all" }))
-                                    }}
-                                >
-                                    <Delete />
-                                </LoadingButton>
-                            </TableCell>
-                        </TableRow>
-                    ))}
-
-
-
-                    <CartSummary />
-
-                </TableBody>
-            </Table>
-        </TableContainer>
     );
-}
-
-function setLoading(arg0: { loading: boolean; id: string; }) {
-    throw new Error("Function not implemented.");
 }
