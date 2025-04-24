@@ -17,7 +17,7 @@ export default function Info()
                 {cart?.cartItems.map((item) => (
                     <ListItem key={item.productId} sx={{py: 1, px: 0}}>
                         <ListItemAvatar>
-                            <Avatar variant="square" src={`http://localhost:5025/images/${item.imageUrl}`}></Avatar>
+                            <Avatar variant="square" src={`${import.meta.env.VITE_API_URL}/images/${item.imageUrl}`}></Avatar>
                         </ListItemAvatar>
                         <ListItemText sx={{mr: 2}} primary={item.name.substring(0,15) + "..."} secondary={`x ${item.quantity}`} />
                         <Typography variant="body1">

@@ -2,7 +2,7 @@
     CircularProgress, Divider, Stack, Table, TableBody,
     TableCell, TableContainer, TableRow, Typography
 } from '@mui/material';
-import Grid from '@mui/material/Grid';
+import Grid from "@mui/material/Grid";
 import { useEffect } from 'react';
 import { useParams } from 'react-router';
 import { AddShoppingCart } from '@mui/icons-material';
@@ -79,11 +79,10 @@ export default function ProductDetailsPage() {
                         Add to Cart
                     </LoadingButton>
 
-                    {item?.quantity! > 0 && (
-                        <Typography variant="body2">
-                            {item.quantity} in your cart
-                        </Typography>
+                    {item && item.quantity > 0 && (
+                        <Typography>{item.quantity} in your cart</Typography>
                     )}
+
                 </Stack>
             </Grid>
         </Grid>

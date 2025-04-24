@@ -80,9 +80,9 @@ const Account = {
 }
 
 const Order = {
-    getOrders: () => queries.get("orders"),
-    getOrder: (id:number) => queries.get(`orders/${id}`),
-    createOrder: (formData: any) => queries.post("orders", formData)
+    getOrders: () => queries.get("order"),
+    getOrder: (id:number) => queries.get(`order/${id}`),
+    createOrder: (formData: any) => queries.post("order", formData)
 }
 
 const requests = {

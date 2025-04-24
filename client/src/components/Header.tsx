@@ -1,5 +1,6 @@
-import { ShoppingCart } from "@mui/icons-material";
-import { AppBar, Badge, Box, Button, Stack, Toolbar, Typography } from "@mui/material";
+import { useState } from "react";
+import { ShoppingCart, KeyboardArrowDown } from "@mui/icons-material";
+import { AppBar, Badge, Menu, Container, Box, Button, MenuItem, Stack, Toolbar, Typography } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import { NavLink, Link } from "react-router-dom"; // Added import from "react-router-dom"
 import { logout } from "../pages/account/accountSlice"; // Added import for logout action
@@ -37,8 +38,20 @@ export default function Header() {
 
     const itemCount = cart?.cartItems.reduce((total, item) => total + item.quantity, 0);
 
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+    const open = Boolean(anchorEl);
+
+    function handleMenuClick(event: React.MouseEvent<HTMLButtonElement>) {
+      setAnchorEl(event.currentTarget);
+    }
+
+    function handleClose() {
+      setAnchorEl(null);
+    }
+
     return (
         <AppBar position="static" sx={{ mb: 4 }}>
+            <Container maxWidth="lg">
             <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
                 <Box sx={{ display: "flex", alignItems: "center" }}>
                     <Typography variant="h6">E-Commerce</Typography>
@@ -60,15 +73,17 @@ export default function Header() {
 
                     {
                         user ? (
-                            <Stack direction="row">
-                                <Button sx={navStyles}>{user.name}</Button>
-                                <Button sx={navStyles}
-                                    onClick={() => {
+                            <>
+                                <Button id="user-button" onClick={handleMenuClick} endIcon={<KeyboardArrowDown />} sx={navStyles}>{user.name}</Button>
+
+                                <Menu id="user-menu" anchorEl={anchorEl} open={open} onClose={handleClose}>
+                                    <MenuItem component={Link} to="/orders">Orders</MenuItem>
+                                    <MenuItem onClick={() => {
                                         dispatch(logout())
                                         dispatch(clearCart())
-                                    }}>
-                                    Log Out</Button>
-                            </Stack>
+                                    }}>Logout</MenuItem>
+                                </Menu>
+                            </>
                         ) : (
                             <Stack direction="row">
                                 {
@@ -83,6 +98,8 @@ export default function Header() {
                 </Box>
 
             </Toolbar>
+            </Container>
+            
         </AppBar>
     );
 }

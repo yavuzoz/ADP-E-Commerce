@@ -12,26 +12,31 @@ import ShoppingCartPage from "../pages/catalog/cart/ShoppingCartPage";
 import RegisterPage from "../pages/account/RegisterPage";
 import CheckoutPage from "../pages/checkout/CheckoutPage";
 import LoginPage from "../pages/account/loginPage";
-
+import AuthGuard from "./AuthGuard";
+import OrderList from "../pages/orders/OrderList";
 
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <App />,
         children: [
+            { element: <AuthGuard />, children: [
+                    { path: "checkout", element: <CheckoutPage /> },
+                    { path: "orders", element: <OrderList /> },
+                ] 
+            },
             { path: "", element: <HomePage /> },
             { path: "about", element: <AboutPage /> },
             { path: "contact", element: <ContactPage /> },
             { path: "catalog", element: <CatalogPage /> },
-            { path: "catalog/:id", element: <ProductDetailsPage /> },
             { path: "cart", element: <ShoppingCartPage /> },
+            { path: "catalog/:id", element: <ProductDetailsPage /> },
             { path: "login", element: <LoginPage /> },
             { path: "register", element: <RegisterPage /> },
-            { path: "checkout", element: <CheckoutPage /> },
             { path: "error", element: <ErrorPage /> },
             { path: "server-error", element: <ServerError /> },
             { path: "not-found", element: <NotFound /> },
-            { path: "*", element: <Navigate to="/not-found" /> }
+            { path : "*", element: <Navigate to="/not-found" />}
         ]
     }
 ])

@@ -15,10 +15,10 @@ namespace API.Controllers
     [Authorize]
     [ApiController]
     [Route("api/[controller]")]
-    public class OrdersController : ControllerBase
+    public class OrderController : ControllerBase
     {
         private readonly DataContext _context;
-        public OrdersController(DataContext context)
+        public OrderController(DataContext context)
         {
             _context = context;
         }
@@ -43,7 +43,7 @@ namespace API.Controllers
                         .FirstOrDefaultAsync();
         }
 
-        [HttpPost("CreateOrder")]
+        [HttpPost]
         public async Task<ActionResult<Order>> CreateOrder(CreateOrderDTO orderDTO)
         {
             var cart = await _context.Carts
