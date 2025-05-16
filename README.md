@@ -50,7 +50,7 @@ Dieses Projekt ist ein vollständiges E-Commerce-Webanwendungssystem, das von zw
 ```
 E-Mail: yoe144963@stud.gibb.ch  
 Benutzername: yavuzozbay  
-Passwort: Admin123!
+Passwort: Admin_123
 ```
 
 ---
@@ -61,7 +61,7 @@ Passwort: Admin123!
 ```
 E-Mail: yke144907@stud.gibb.ch  
 Benutzername: kereciyasin  
-Passwort: Admin123!
+Passwort: Customer_123
 ```
 
 ---
