@@ -36,7 +36,7 @@ Dieses Projekt ist ein vollständiges E-Commerce-Webanwendungssystem, das von zw
 - 👤 Benutzerregistrierung & Login mit JWT
 - 🛒 Warenkorbverwaltung
 - ✅ Bestellungen erstellen und anzeigen
-- 🛠️ Rollenbasierter Zugriff (Admin, Kunde)
+- 🛠️ Rollenbasierter Zugriff (Kunde)
 - 📷 Produktbilder in der Übersicht
 - 📚 API-Kommunikation über HTTP
 - 🧾 Swagger Dokumentation (OpenAPI)
