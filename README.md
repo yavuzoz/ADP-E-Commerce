@@ -14,7 +14,7 @@ Dieses Projekt ist ein vollständiges E-Commerce-Webanwendungssystem, das von zw
 
 ### Backend:
 - ASP.NET Core 9.0
-- Entity Framework Core (MySQL)
+- Entity Framework Core
 - Identity API
 - JWT (JSON Web Token)
 - Middleware & Static Files
