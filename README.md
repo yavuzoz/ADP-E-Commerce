@@ -70,36 +70,36 @@ Passwort: Customer_123
 
 Login:
 
-![Produktübersicht](./client/screenshots/img1.png)
+![Produktübersicht](./client/src/screenshots/img1.png)
 
 Register:
 
-![Produktübersicht](./client/screenshots/img2.png)
+![Produktübersicht](./client/src/screenshots/img2.png)
 
 Catalog:
 
-![Produktübersicht](./client/screenshots/img3.png)
+![Produktübersicht](./client/src/screenshots/img3.png)
 
 Catalog Details:
 
-![Produktübersicht](./client/screenshots/img4.png)
+![Produktübersicht](./client/src/screenshots/img4.png)
 
 Warenkorb:
 
-![Produktübersicht](./client/screenshots/img5.png)
+![Produktübersicht](./client/src/screenshots/img5.png)
 
 Bestellung:
 
-![Produktübersicht](./client/screenshots/img6.png)
+![Produktübersicht](./client/src/screenshots/img6.png)
 
 
 Zahlung:
 
-![Produktübersicht](./client/screenshots/img7.png)
+![Produktübersicht](./client/src/screenshots/img7.png)
 
 Bestätigung:
 
-![Produktübersicht](./client/screenshots/img8.png)
+![Produktübersicht](./client/src/screenshots/img8.png)
 
 ---
 
