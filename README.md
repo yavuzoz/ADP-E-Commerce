@@ -68,11 +68,38 @@ Passwort: Customer_123
 
 ## 📷 Screenshots
 
-Ein Beispielbild der Produktübersicht:
+Login:
 
-![Produktübersicht](./screenshots/product-list.png)
+![Produktübersicht](./client/screenshots/img1.png)
 
-> Du kannst eigene Bilder im Ordner `screenshots/` speichern und hier verlinken.
+Register:
+
+![Produktübersicht](./client/screenshots/img2.png)
+
+Catalog:
+
+![Produktübersicht](./client/screenshots/img3.png)
+
+Catalog Details:
+
+![Produktübersicht](./client/screenshots/img4.png)
+
+Warenkorb:
+
+![Produktübersicht](./client/screenshots/img5.png)
+
+Bestellung:
+
+![Produktübersicht](./client/screenshots/img6.png)
+
+
+Zahlung:
+
+![Produktübersicht](./client/screenshots/img7.png)
+
+Bestätigung:
+
+![Produktübersicht](./client/screenshots/img8.png)
 
 ---
 
@@ -154,7 +181,6 @@ ADP-ECommerce/
 │   ├── public/
 │   └── .env
 ├── README.md
-└── screenshots/
 ```
 
 ---
