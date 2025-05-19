@@ -95,6 +95,58 @@ Bestellung:
 
 Zahlung:
 
+💳 Zahlungsintegration mit iyzico
+Für die Zahlungsabwicklung wurde iyzico als externer Zahlungsanbieter integriert. Die Kommunikation erfolgt über die offizielle iyzipay-dotnet-Bibliothek.
+
+Verwendet wird die Sandbox API für Testzahlungen
+
+Kreditkartendaten werden über ein sicheres Formular übermittelt
+
+Unterstützte Währungen: EUR, USD, CHF
+
+Für Fremdwährungen wie EUR oder CHF werden Cross-Border Testkarten benötigt
+
+Ablauf beim Bezahlen (Back-End):
+
+Der Nutzer gibt beim Checkout seine Kreditkartendaten ein
+
+Die Bestellung wird erstellt und ein Zahlungsobjekt mit der iyzico-API generiert
+
+Zahlungsinformationen wie Name, Adresse, IP und Warenkorbinhalt werden übergeben
+
+iyzico antwortet mit dem Zahlungsstatus (success oder failure)
+
+Bei Erfolg wird die Bestellung in der Datenbank gespeichert
+
+Codebeispiel: (verkürzt)
+```json
+Options options = new Options {
+    ApiKey = _config["PaymentAPI:APIKey"],
+    SecretKey = _config["PaymentAPI:SecretKey"],
+    BaseUrl = "https://sandbox-api.iyzipay.com"
+};
+
+CreatePaymentRequest request = new CreatePaymentRequest {
+    Currency = Currency.EUR.ToString(),
+    PaymentCard = new PaymentCard {
+        CardHolderName = model.CardName,
+        CardNumber = model.CardNumber,
+        ...
+    },
+    Buyer = new Buyer {
+        Name = model.FirstName,
+        Surname = model.LastName,
+        Country = "Switzerland"
+    },
+    ...
+};
+
+var paymentResult = Payment.Create(request, options);
+```
+💡 Für EUR/CHF-Zahlungen muss eine internationale Testkarte verwendet werden, z. B. 5400010000000004 (Visa – Cross-Border).
+Weitere Informationen zur Integration:
+👉 iyzico Developer Docs
+
 ![Produktübersicht](./client/src/screenshots/img7.png)
 
 Bestätigung:
