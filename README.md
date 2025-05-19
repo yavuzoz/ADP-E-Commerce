@@ -110,8 +110,23 @@ Bestätigung:
 1. Konfiguriere die Datenbankverbindung in `appsettings.json`:
 
 ```json
-"ConnectionStrings": {
-  "DefaultConnection": "server=localhost;port=3306;database=ECommerce;user=root;password=deinpasswort;"
+{
+    "Logging": {
+        "LogLevel": {
+            "Default": "Information",
+            "Microsoft.AspNetCore": "Warning"
+        }
+    },
+    "ConnectionStrings": {
+        "DefaultConnection": "Server=localhost;Port=3306;Database=ecommerce;User=root;Password= ;"
+    },
+    "JWTSecurity": {
+        "SecretKey": " "
+    },
+    "PaymentAPI": {
+        "ApiKey": " ",
+        "SecretKey": " "
+    }
 }
 ```
 
