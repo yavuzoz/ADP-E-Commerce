@@ -8,6 +8,8 @@
 
 	<ItemGroup>
 		
+		<PackageReference Include="Iyzipay" Version="2.1.67" />
+		
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.13" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.13" />
 		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.4" />

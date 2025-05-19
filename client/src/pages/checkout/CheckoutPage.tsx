@@ -1,5 +1,4 @@
-import Grid2 from "@mui/material/Grid";
-import { Box, Button, Paper, Stack, Step, StepLabel, Stepper, Typography } from "@mui/material";
+import { Box, Button, Paper, Stack, Step, StepLabel, Stepper, Typography, Grid } from "@mui/material";
 import Info from "./Info";
 import AddressForm from "./AddressForm";
 import PaymentForm from "./PaymentForm";
@@ -10,7 +9,6 @@ import { FieldValues, FormProvider, useForm } from "react-hook-form";
 import requests from "../../../api/requests";
 import { useAppDispatch } from "../../store/store";
 import { clearCart } from "@/pages/catalog/cart/cartSlice";
-import { LoadingButton } from "@mui/lab";
 
 const steps = ["Shipping Information", "Payment", "Order Summary"];
 
@@ -35,27 +33,36 @@ export default function CheckoutPage() {
     const dispatch = useAppDispatch();
 
     async function handleNext(data: FieldValues) {
-       
-        if(activeStep === 2) 
-        {
+        console.log("Form Data:", data);
+        if (activeStep === 2) {
             setLoading(true);
-            try
-            {
-                setOrderId(await requests.Order.createOrder(data));
+            try {
+                const orderData = {
+                    firstName: data.firstName,
+                    lastName: data.lastName,
+                    phone: data.phone,
+                    city: data.city,
+                    addresLine: data.addresLine,
+                    cardName: data.cardName,
+                    cardNumber: data.cardNumber,
+                    cardExpireMonth: data.cardExpireMonth,
+                    cardExpireYear: data.cardExpireYear,
+                    cardCvc: data.cardCvc
+                };
+
+                setOrderId(await requests.Order.createOrder(orderData));
                 setActiveStep(activeStep + 1);
                 dispatch(clearCart());
                 setLoading(false);
-            }
-            catch(error: any) {
+            } catch (error: any) {
                 console.log(error);
                 setLoading(false);
             }
-        }
-        else
-        {
+        } else {
             setActiveStep(activeStep + 1);
         }
     }
+
     function handlePrevious() {
         setActiveStep(activeStep - 1);
     }
@@ -63,16 +70,17 @@ export default function CheckoutPage() {
     return (
         <FormProvider {...methods}>
             <Paper>
-                <Grid2 container spacing={4}>
+                <Grid container spacing={4}>
                     {activeStep !== steps.length && (
-                    <Grid2 size={4} sx={{
-                        borderRight: "1px solid",
-                        borderColor: "divider",
-                        p: 3
-                    }}>
-                        <Info />
-                    </Grid2>)}
-                    <Grid2 size={8} sx={{ p: 3 }}>
+                        <Grid item xs={12} md={4} sx={{
+                            borderRight: "1px solid",
+                            borderColor: "divider",
+                            p: 3
+                        }}>
+                            <Info />
+                        </Grid>
+                    )}
+                    <Grid item xs={12} md={8} sx={{ p: 3 }}>
                         <Box>
                             <Stepper activeStep={activeStep} sx={{ height: 40, mb: 4 }}>
                                 {steps.map((label) => (
@@ -88,7 +96,7 @@ export default function CheckoutPage() {
                                     <Typography variant="h1">📦</Typography>
                                     <Typography variant="h5">Thank you! Your order has been received</Typography>
                                     <Typography variant="body1" sx={{ color: "text.secondary" }}>
-                                        Your order number is <strong>{ orderId }</strong>. We will send you a confirmation email once it’s approved.
+                                        Your order number is <strong>{orderId}</strong>. We will send you a confirmation email once it’s approved.
                                     </Typography>
                                     <Button
                                         sx={{
@@ -103,13 +111,11 @@ export default function CheckoutPage() {
                             ) : (
                                 <form onSubmit={methods.handleSubmit(handleNext)}>
                                     {getStepContent(activeStep)}
-                                    <Box>
-                                        <Box sx={[
-                                            { display: "flex" },
-                                            activeStep !== 0
-                                                ? { justifyContent: "space-between" }
-                                                : { justifyContent: "flex-end" }
-                                        ]}>
+                                    <Box mt={2}>
+                                        <Box sx={{
+                                            display: "flex",
+                                            justifyContent: activeStep !== 0 ? "space-between" : "flex-end"
+                                        }}>
                                             {activeStep !== 0 && (
                                                 <Button
                                                     startIcon={<ChevronLeftRounded />}
@@ -119,23 +125,22 @@ export default function CheckoutPage() {
                                                     Back
                                                 </Button>
                                             )}
-                                            <LoadingButton
+                                            <Button
                                                 type="submit"
-                                                loading={ loading }
+                                                loading={loading}
                                                 startIcon={<ChevronRightRounded />}
                                                 variant="contained"
                                             >
-                                                { activeStep == 2 ? "Complete the order":"Continue"}
-                                            </LoadingButton>
+                                                {activeStep === 2 ? "Complete the order" : "Continue"}
+                                            </Button>
                                         </Box>
                                     </Box>
                                 </form>
                             )}
                         </Box>
-                    </Grid2>
-                </Grid2>
+                    </Grid>
+                </Grid>
             </Paper>
         </FormProvider>
     );
 }
-

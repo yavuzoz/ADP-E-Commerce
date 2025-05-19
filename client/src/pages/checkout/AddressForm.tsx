@@ -1,65 +1,68 @@
 import { TextField } from "@mui/material";
-import Grid2 from "@mui/material/Grid";
+import Grid from "@mui/material/Grid";
 import { useFormContext } from "react-hook-form";
 
-export default function AddressForm()
-{
-    const { register, formState: {errors} } = useFormContext();
+export default function AddressForm() {
+    const { register, formState: { errors } } = useFormContext();
     return (
-        <Grid2 container spacing={3}>
-
-            <Grid2 size={{xs: 12, md: 6}}>
-                 <TextField 
-                    {...register("firstname", {required: "firstname is required"})}
-                    label="Enter firstname" 
-                    fullWidth autoFocus 
-                    sx={{mb: 2}} 
+        <Grid container spacing={3}>
+            <Grid item xs={12} md={6}>
+                <TextField
+                    {...register("firstName", { required: "First name is required" })}
+                    label="Enter firstname"
+                    fullWidth
+                    autoFocus
+                    sx={{ mb: 2 }}
                     size="small"
-                    error={!!errors.username}></TextField>
-            </Grid2>
+                    error={!!errors.firstName}
+                />
+            </Grid>
 
-            <Grid2 size={{xs: 12 , md: 6}}>
-                 <TextField 
-                    {...register("lastname", {required: "lastname is required"})}
-                    label="Enter lastname" 
-                    fullWidth 
-                    sx={{mb: 2}} 
+            <Grid item xs={12} md={6}>
+                <TextField
+                    {...register("lastName", { required: "Last name is required" })}
+                    label="Enter lastname"
+                    fullWidth
+                    sx={{ mb: 2 }}
                     size="small"
-                    error={!!errors.lastname}></TextField>
-            </Grid2>
+                    error={!!errors.lastName}
+                />
+            </Grid>
 
-            <Grid2 size={{xs: 12 , md: 6}}>
-                 <TextField 
-                    {...register("phone", {required: "phone is required"})}
-                    label="Enter phone" 
-                    fullWidth 
-                    sx={{mb: 2}} 
+            <Grid item xs={12} md={6}>
+                <TextField
+                    {...register("phone", { required: "Phone is required" })}
+                    label="Enter phone"
+                    fullWidth
+                    sx={{ mb: 2 }}
                     size="small"
-                    error={!!errors.phone}></TextField>
-            </Grid2>
+                    error={!!errors.phone}
+                />
+            </Grid>
 
-            <Grid2 size={{xs: 12 , md: 6}}>
-                 <TextField 
-                    {...register("city", {required: "city is required"})}
-                    label="Enter city" 
-                    fullWidth 
-                    sx={{mb: 2}} 
+            <Grid item xs={12} md={6}>
+                <TextField
+                    {...register("city", { required: "City is required" })}
+                    label="Enter city"
+                    fullWidth
+                    sx={{ mb: 2 }}
                     size="small"
-                    error={!!errors.city}></TextField>
-            </Grid2>
+                    error={!!errors.city}
+                />
+            </Grid>
 
-            <Grid2 size={{xs: 12}}>
-                 <TextField 
-                    {...register("addressline", {required: "addressline is required"})}
-                    label="Enter addressline" 
-                    fullWidth 
+            <Grid item xs={12}>
+                <TextField
+                    {...register("addresLine", { required: "AddressLine is required" })}
+                    label="Enter addressline"
+                    fullWidth
                     multiline
                     rows={4}
-                    sx={{mb: 2}} 
+                    sx={{ mb: 2 }}
                     size="small"
-                    error={!!errors.addressline}></TextField>
-            </Grid2>
-
-        </Grid2>
+                    error={!!errors.addresLine}
+                />
+            </Grid>
+        </Grid>
     );
 }

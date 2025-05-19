@@ -35,6 +35,11 @@ public class Cart
             CartItems.Remove(item);
         }
     }
+
+    public double CalculateTotal()
+    {
+        return (double)CartItems.Sum(i => i.Product.Price * i.Quantity);
+    }
 }
 
 public class CartItem
@@ -45,8 +50,6 @@ public class CartItem
     public Product Product { get; set; } = null!;
 
     public int CartId { get; set; }
-     [JsonIgnore] 
-    public Cart Cart { get; set; } = null!;
     public int Quantity { get; set; }
 
 }
